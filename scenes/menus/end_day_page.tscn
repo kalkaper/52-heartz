@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://cljmdui1fahyq"]
+
+[node name="EndDayPage" type="Control" unique_id=745357391]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EndDayBox" type="VBoxContainer" parent="." unique_id=1578113925]
+custom_minimum_size = Vector2(720, 0)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = 20.0
+offset_right = 720.0
+offset_bottom = 139.0
+grow_vertical = 2
+
+[node name="Question" type="Label" parent="EndDayBox" unique_id=1514541134]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "End The Day?"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_trim_flags = 128
+
+[node name="ButtonChoices" type="HBoxContainer" parent="EndDayBox" unique_id=2136937473]
+layout_mode = 2
+theme_override_constants/separation = 60
+accessibility_region = true
+alignment = 1
+
+[node name="YesButton" type="Button" parent="EndDayBox/ButtonChoices" unique_id=1623265001]
+custom_minimum_size = Vector2(140, 60)
+layout_mode = 2
+text = "YES"
+
+[node name="NoButton" type="Button" parent="EndDayBox/ButtonChoices" unique_id=1632187594]
+custom_minimum_size = Vector2(140, 60)
+layout_mode = 2
+text = "NO"

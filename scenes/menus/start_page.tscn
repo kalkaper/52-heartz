@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://cyhut51ucpmps"]
+
+[ext_resource type="Texture2D" uid="uid://c2mes8ciykfbh" path="res://assets/placeholders/placeholdervertical.jpg" id="1_u6xak"]
+
+[node name="Start Page" type="Control" unique_id=1151222236]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PhotoImage" type="TextureRect" parent="." unique_id=438396576]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 60.0
+offset_right = 649.0
+offset_bottom = 740.0
+texture = ExtResource("1_u6xak")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="LetterImage" type="TextureRect" parent="." unique_id=1965235643]
+layout_mode = 0
+offset_left = 760.0
+offset_top = 60.0
+offset_right = 1340.0
+offset_bottom = 740.0
+texture = ExtResource("1_u6xak")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Title" type="Label" parent="." unique_id=1101930173]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 60.0
+offset_right = 324.0
+offset_bottom = 127.0
+theme_override_font_sizes/font_size = 48
+text = "The Journal"

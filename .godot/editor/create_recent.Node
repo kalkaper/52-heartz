@@ -1,6 +1,10 @@
-Control
+Label
+TextureRect
+Button
 ColorRect
-CanvasLayer
 HBoxContainer
+VBoxContainer
+Control
+CanvasLayer
 Node
 Node2D

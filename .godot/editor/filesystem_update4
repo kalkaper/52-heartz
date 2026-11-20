@@ -1,0 +1,7 @@
+res://scenes/menus/journal.tscn
+res://scenes/menus/task_page.tscn
+res://scenes/menus/end_day_page.tscn
+res://scenes/menus/start_page.tscn
+res://scenes/menus/menu_page.tscn
+res://scenes/menus/log_page.tscn
+res://scripts/menus/journal.gd
