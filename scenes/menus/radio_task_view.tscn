@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://bce0wsp5tlqnc"]
+
+[ext_resource type="Texture2D" uid="uid://c2mes8ciykfbh" path="res://assets/placeholders/placeholdervertical.jpg" id="1_3ryh1"]
+[ext_resource type="Script" uid="uid://dbkx7ofv8t7g1" path="res://scripts/menus/radio_task_view.gd" id="1_qsc4h"]
+
+[node name="RadioTaskView" type="Control" unique_id=477646471]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -700.0
+offset_top = -400.0
+offset_right = 700.0
+offset_bottom = 400.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qsc4h")
+
+[node name="RadioImage" type="TextureRect" parent="." unique_id=65206990]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 60.0
+offset_right = 640.0
+offset_bottom = 740.0
+texture = ExtResource("1_3ryh1")
+expand_mode = 1
+
+[node name="Text" type="RichTextLabel" parent="." unique_id=120761504]
+layout_mode = 0
+offset_left = 760.0
+offset_top = 60.0
+offset_right = 1340.0
+offset_bottom = 520.0
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "bomboclat"
+
+[node name="ChoicesContainer" type="VBoxContainer" parent="." unique_id=2006397339]
+custom_minimum_size = Vector2(580, 0)
+layout_mode = 0
+offset_left = 760.0
+offset_top = 540.0
+offset_right = 1340.0
+offset_bottom = 580.0
+
+[node name="ContinueButton" type="Button" parent="." unique_id=1044745181]
+custom_minimum_size = Vector2(160, 60)
+layout_mode = 0
+offset_left = 1180.0
+offset_top = 700.0
+offset_right = 1340.0
+offset_bottom = 760.0
+theme_override_font_sizes/font_size = 32
+text = "Continue"
+
+[node name="52HzButton" type="Button" parent="." unique_id=272355745]
+visible = false
+custom_minimum_size = Vector2(160, 60)
+layout_mode = 0
+offset_left = 760.0
+offset_top = 700.0
+offset_right = 920.0
+offset_bottom = 760.0
+theme_override_font_sizes/font_size = 32
+text = "52"

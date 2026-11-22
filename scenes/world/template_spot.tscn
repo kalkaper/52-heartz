@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://crgodtyb5jia"]
+
+[ext_resource type="Script" uid="uid://dso8gxyryk7tf" path="res://scripts/world/template_spot.gd" id="1_uce0x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uce0x"]
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+
+[node name="TemplateSpot" type="TextureButton" unique_id=689575039]
+custom_minimum_size = Vector2(60, 60)
+ignore_texture_size = true
+script = ExtResource("1_uce0x")
+
+[node name="Fill" type="ColorRect" parent="." unique_id=666296292]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0.15686275)
+
+[node name="OutlineBox" type="Panel" parent="." unique_id=1431499387]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_uce0x")
+
+[node name="OutlineImage" type="TextureRect" parent="." unique_id=1470005650]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1

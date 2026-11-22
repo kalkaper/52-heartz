@@ -1,0 +1,129 @@
+[gd_scene format=3 uid="uid://887xbtc2tm2y"]
+
+[ext_resource type="Script" uid="uid://blacnaq4smlkb" path="res://scripts/world/bedroom.gd" id="1_tghyh"]
+[ext_resource type="PackedScene" uid="uid://crgodtyb5jia" path="res://scenes/world/template_spot.tscn" id="2_v2s0l"]
+
+[node name="Bedroom" type="Control" unique_id=616402177]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_tghyh")
+
+[node name="Background" type="TextureRect" parent="." unique_id=2141735496]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ObjectSpots" type="Control" parent="." unique_id=504703285]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="BedSpot" parent="ObjectSpots" unique_id=689575039 instance=ExtResource("2_v2s0l")]
+layout_mode = 0
+offset_left = 239.0
+offset_top = 610.0
+offset_right = 239.0
+offset_bottom = 610.0
+choice_texts = Array[String](["Inspect Bed?", "Go to sleep?"])
+choice_actions = Array[String](["inspect_bed", "go_to_sleep"])
+
+[node name="FloorSpot" parent="ObjectSpots" unique_id=16581784 instance=ExtResource("2_v2s0l")]
+layout_mode = 0
+offset_left = 956.0
+offset_top = 887.0
+offset_right = 956.0
+offset_bottom = 887.0
+choice_texts = Array[String](["[look behind]"])
+choice_actions = Array[String](["look_behind"])
+
+[node name="WindowSpot" parent="ObjectSpots" unique_id=1796644731 instance=ExtResource("2_v2s0l")]
+layout_mode = 0
+offset_left = 952.0
+offset_top = 260.0
+offset_right = 952.0
+offset_bottom = 260.0
+choice_texts = Array[String](["Look outside?"])
+choice_actions = Array[String](["inspect_window"])
+
+[node name="DoorSpot" parent="ObjectSpots" unique_id=1136454035 instance=ExtResource("2_v2s0l")]
+layout_mode = 0
+offset_left = 1777.0
+offset_top = 607.0
+offset_right = 1777.0
+offset_bottom = 607.0
+choice_texts = Array[String](["Go to the Radio Room?"])
+choice_actions = Array[String](["go_radio_room"])
+
+[node name="JournalSpot" parent="ObjectSpots" unique_id=1296297317 instance=ExtResource("2_v2s0l")]
+layout_mode = 0
+offset_left = 801.0
+offset_top = 495.0
+offset_right = 801.0
+offset_bottom = 495.0
+choice_texts = Array[String](["Pick up the journal?"])
+choice_actions = Array[String](["pick_up_journal"])
+
+[node name="LampSpot" parent="ObjectSpots" unique_id=461291740 instance=ExtResource("2_v2s0l")]
+layout_mode = 0
+offset_left = 1042.0
+offset_top = 497.0
+offset_right = 1042.0
+offset_bottom = 497.0
+choice_texts = Array[String](["Inspect the lamp?"])
+choice_actions = Array[String](["inspect_lamp"])
+
+[node name="PhotoSpot" parent="ObjectSpots" unique_id=1011819930 instance=ExtResource("2_v2s0l")]
+layout_mode = 0
+offset_left = 924.0
+offset_top = 495.0
+offset_right = 924.0
+offset_bottom = 495.0
+choice_texts = Array[String](["Look at the photos?"])
+choice_actions = Array[String](["look_photos"])
+
+[node name="ThingsSpot" parent="ObjectSpots" unique_id=686564677 instance=ExtResource("2_v2s0l")]
+layout_mode = 0
+offset_left = 1140.0
+offset_top = 497.0
+offset_right = 1140.0
+offset_bottom = 497.0
+choice_texts = Array[String](["Look through the things?"])
+choice_actions = Array[String](["look_things"])
+
+[node name="Locker1Spot" parent="ObjectSpots" unique_id=390687103 instance=ExtResource("2_v2s0l")]
+layout_mode = 0
+offset_left = 950.0
+offset_top = 581.0
+offset_right = 950.0
+offset_bottom = 581.0
+choice_texts = Array[String](["Open the locker?"])
+choice_actions = Array[String](["open_locker_1"])
+
+[node name="Locker2Spot" parent="ObjectSpots" unique_id=2059885034 instance=ExtResource("2_v2s0l")]
+layout_mode = 0
+offset_left = 955.0
+offset_top = 701.0
+offset_right = 955.0
+offset_bottom = 701.0
+choice_texts = Array[String](["Open the locker?"])
+choice_actions = Array[String](["open_locker_2"])
+
+[node name="ChoicesWhenObjectHovered" type="VBoxContainer" parent="." unique_id=1785295596]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Timer" type="Timer" parent="." unique_id=608953808]

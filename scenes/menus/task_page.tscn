@@ -24,18 +24,3 @@ offset_left = 60.0
 offset_top = 180.0
 offset_right = 620.0
 offset_bottom = 347.0
-
-[node name="Button" type="Button" parent="RowsOfTask" unique_id=388779606]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "task 1"
-
-[node name="Button2" type="Button" parent="RowsOfTask" unique_id=186892575]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "task 1"
-
-[node name="Button3" type="Button" parent="RowsOfTask" unique_id=940515669]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "task 1"

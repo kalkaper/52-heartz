@@ -1,17 +1,21 @@
 [gd_scene format=3 uid="uid://csduek12cj5po"]
 
 [ext_resource type="PackedScene" uid="uid://cojky63ib5jwn" path="res://scenes/menus/top_bar.tscn" id="1_jyhfs"]
+[ext_resource type="Script" uid="uid://dcnfsed2ggg6" path="res://scripts/main.gd" id="1_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://fah3nqhy6ywh" path="res://scenes/menus/journal.tscn" id="2_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://dxfwbgajccnjh" path="res://scenes/menus/fade.tscn" id="3_tefeu"]
 [ext_resource type="PackedScene" uid="uid://etfnjr0sui1k" path="res://scenes/menus/montage_videoplayer.tscn" id="4_o6xl0"]
+[ext_resource type="Script" uid="uid://k6a8vcwtf41a" path="res://scripts/menus/fade.gd" id="5_tefeu"]
 
 [node name="Main" type="Node" unique_id=1278151195]
+script = ExtResource("1_tbgi4")
 
 [node name="World" type="Node" parent="." unique_id=386098760]
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=378108477]
 
 [node name="TopBar" parent="UI" unique_id=202548729 instance=ExtResource("1_jyhfs")]
+mouse_filter = 2
 
 [node name="Journal" parent="UI" unique_id=1883195609 instance=ExtResource("2_tbgi4")]
 
@@ -20,15 +24,20 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 
 [node name="Whisper" type="Control" parent="UI" unique_id=1430624201]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 
 [node name="Overlay" type="CanvasLayer" parent="." unique_id=1700888918]
 
 [node name="Fade" parent="Overlay" unique_id=188523557 instance=ExtResource("3_tefeu")]
+script = ExtResource("5_tefeu")
 
 [node name="MontageVideoPlayer" parent="Overlay" unique_id=1007961073 instance=ExtResource("4_o6xl0")]
+visible = false
+mouse_filter = 2

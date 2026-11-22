@@ -33,12 +33,23 @@ theme_override_constants/separation = 60
 accessibility_region = true
 alignment = 1
 
-[node name="YesButton" type="Button" parent="EndDayBox/ButtonChoices" unique_id=1623265001]
+[node name="YesButton" type="TextureButton" parent="EndDayBox/ButtonChoices" unique_id=1314285613]
 custom_minimum_size = Vector2(140, 60)
 layout_mode = 2
+
+[node name="YesButtonLabel" type="Label" parent="EndDayBox/ButtonChoices/YesButton" unique_id=276599691]
+custom_minimum_size = Vector2(140, 60)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 22.0
 text = "YES"
 
-[node name="NoButton" type="Button" parent="EndDayBox/ButtonChoices" unique_id=1632187594]
+[node name="NoButton" type="TextureButton" parent="EndDayBox/ButtonChoices" unique_id=722928486]
 custom_minimum_size = Vector2(140, 60)
 layout_mode = 2
-text = "NO"
+
+[node name="NoButtonLabel" type="Label" parent="EndDayBox/ButtonChoices/NoButton" unique_id=1481621083]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 22.0
+text = "No"

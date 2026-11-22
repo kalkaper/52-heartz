@@ -1,0 +1,20 @@
+{
+  "id": "loop1_day1",
+  "lines": [
+	{"who": "captain", "text": "P-00P Class WS here, with Captain Jay Dicks reporting position at didy yams 3 oclock here"},
+	{"who": "you", "text": "Copy that, Captain J. Dicks."},
+	{"who": "captain", "text": "Hello maam do u think the whale kinda sus"},
+	{"choice": [
+	  {"text": "What do you mean by that?", "set": "confused"},
+	  {"text": "No they're always like this", "set": "disagree"}
+	]},
+	{"who": "captain", "text": "I mean like didy camel yk", "if": "confused"},
+	{"who": "you", "text": "what camel sir.", "if": "confused"},
+	{"who": "captain", "text": "yk, like didy alebert epstin", "if": "confused"},
+	{"who": "you", "text": "huh what", "if": "confused"},
+	{"who": "captain", "text": "nvm", "if": "confused"},
+	{"who": "captain", "text": "well okay then", "if": "disagree"},
+	{"who": "captain", "text": "Anyway. didy frutiger aero again tomorrow."},
+	{"who": "you", "text": "Understood."}
+  ]
+}
