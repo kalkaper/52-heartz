@@ -18,6 +18,14 @@ config/features=PackedStringArray("4.7")
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 
+[file_customization]
+
+folder_colors={
+"res://assets/": "red",
+"res://scenes/": "green",
+"res://scripts/": "blue"
+}
+
 [gui]
 
 theme/custom_font="uid://cvhn7wxwlbqyp"

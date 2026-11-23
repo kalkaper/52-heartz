@@ -16,7 +16,6 @@ var mouse_on_menu = false
 @onready var menu = $ChoicesWhenObjectHovered
 @onready var hide_timer = $Timer
 
-
 func _ready():
 	menu.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	menu.hide()
@@ -27,6 +26,10 @@ func _ready():
 		spot.hovered.connect(on_spot_hovered)
 		spot.unhovered.connect(on_spot_unhovered)
 
+# press "esc" to quit the game
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
+		get_tree().quit()
 
 # --- hovering ---
 

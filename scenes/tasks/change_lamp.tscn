@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://cjjx62hqn1tyc"]
+
+[ext_resource type="Script" uid="uid://s5mrsy4siuyr" path="res://scripts/tasks/change_lamp.gd" id="1_312vk"]
+
+[node name="ChangeLamp" type="Control" unique_id=1284890063]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_312vk")
+
+[node name="LampSlot" type="ColorRect" parent="." unique_id=956836765]
+layout_mode = 0
+offset_left = 840.0
+offset_top = 140.0
+offset_right = 1080.0
+offset_bottom = 380.0
+
+[node name="Label" type="Label" parent="." unique_id=790431211]
+layout_mode = 0
+offset_left = 1142.0
+offset_top = 187.0
+offset_right = 1862.0
+offset_bottom = 322.0
+theme_override_font_sizes/font_size = 48
+text = "Drag the red (old lamp) out
+Then put the green (new lamp) in"
+
+[node name="OldLamp" type="ColorRect" parent="." unique_id=805184607]
+layout_mode = 0
+offset_left = 860.0
+offset_top = 160.0
+offset_right = 1060.0
+offset_bottom = 360.0
+color = Color(1, 0, 0, 1)
+
+[node name="NewLamp" type="ColorRect" parent="." unique_id=187076545]
+layout_mode = 0
+offset_left = 856.0
+offset_top = 727.0
+offset_right = 1056.0
+offset_bottom = 927.0
+color = Color(0, 1, 0, 1)
+
+[node name="Success" type="Label" parent="." unique_id=1694560507]
+layout_mode = 0
+offset_left = 768.0
+offset_top = 30.0
+offset_right = 1488.0
+offset_bottom = 165.0
+theme_override_font_sizes/font_size = 48
+text = "Task compeleted!"

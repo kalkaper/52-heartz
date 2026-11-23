@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://dwxgwavmwujr5"]
+
+[ext_resource type="Script" uid="uid://dt3hcudfx8uob" path="res://scripts/tasks/make_bed.gd" id="1_648wf"]
+[ext_resource type="Texture2D" uid="uid://c2mes8ciykfbh" path="res://assets/placeholders/placeholdervertical.jpg" id="2_0fk2t"]
+
+[node name="MakeBed" type="Control" unique_id=409203324]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_648wf")
+
+[node name="Bed" type="ColorRect" parent="." unique_id=2038901035]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 191.0
+offset_right = 846.0
+offset_bottom = 991.0
+
+[node name="TrashBin" type="ColorRect" parent="." unique_id=1670537693]
+layout_mode = 0
+offset_left = 1012.0
+offset_top = 182.0
+offset_right = 1812.0
+offset_bottom = 982.0
+color = Color(0, 0, 0, 1)
+
+[node name="Trashes" type="Control" parent="." unique_id=992790453]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Trash1" type="TextureRect" parent="Trashes" unique_id=1769528648]
+layout_mode = 0
+offset_left = 186.0
+offset_top = 321.0
+offset_right = 306.0
+offset_bottom = 441.0
+texture = ExtResource("2_0fk2t")
+expand_mode = 1
+
+[node name="Trash2" type="TextureRect" parent="Trashes" unique_id=379309886]
+layout_mode = 0
+offset_left = 584.0
+offset_top = 285.0
+offset_right = 704.0
+offset_bottom = 405.0
+texture = ExtResource("2_0fk2t")
+expand_mode = 1
+
+[node name="Trash3" type="TextureRect" parent="Trashes" unique_id=1411430038]
+layout_mode = 0
+offset_left = 515.0
+offset_top = 556.0
+offset_right = 635.0
+offset_bottom = 676.0
+texture = ExtResource("2_0fk2t")
+expand_mode = 1
+
+[node name="Trash4" type="TextureRect" parent="Trashes" unique_id=1617590065]
+layout_mode = 0
+offset_left = 188.0
+offset_top = 647.0
+offset_right = 308.0
+offset_bottom = 767.0
+texture = ExtResource("2_0fk2t")
+expand_mode = 1
+
+[node name="PlacedCount" type="Label" parent="." unique_id=1851782839]
+layout_mode = 0
+offset_left = 769.0
+offset_top = 4.0
+offset_right = 1093.0
+offset_bottom = 92.0
+theme_override_font_sizes/font_size = 64
+text = "Placed 0/4"
+
+[node name="BedLabel" type="Label" parent="." unique_id=1079887599]
+layout_mode = 0
+offset_left = 265.0
+offset_top = 859.0
+offset_right = 589.0
+offset_bottom = 947.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
+text = "Bed"
+
+[node name="TrashBinLabel" type="Label" parent="." unique_id=43185788]
+layout_mode = 0
+offset_left = 1231.0
+offset_top = 841.0
+offset_right = 1555.0
+offset_bottom = 929.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 64
+text = "Trash Bin"
