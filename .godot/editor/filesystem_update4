@@ -1,8 +1,4 @@
-res://scripts/world/bedroom.gd
-res://scenes/world/bedroom.tscn
-res://scenes/tasks/charge_radio.tscn
-res://scripts/tasks/charge_radio.gd
-res://scenes/tasks/make_bed.tscn
-res://scripts/tasks/make_bed.gd
-res://scenes/tasks/change_lamp.tscn
-res://scripts/tasks/change_lamp.gd
+res://scenes/tasks/extra_task_1.tscn
+res://scripts/tasks/extra_task_1.gd
+res://scenes/tasks/extra_task_2.tscn
+res://scripts/tasks/extra_task_2.gd
