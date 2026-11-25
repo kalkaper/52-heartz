@@ -1,2 +1,4 @@
 res://scenes/tasks/extra_task_3.tscn
 res://scripts/tasks/extra_task_3.gd
+res://scenes/tasks/extra_task_4.tscn
+res://scripts/tasks/extra_task_4.gd
