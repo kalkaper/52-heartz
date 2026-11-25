@@ -1,0 +1,10 @@
+{"lines": [
+  {"who": "captain", "text": "Lighthouse, you sound weird. Zzzt. Head hurt?"},
+  {"choice": [
+	{"text": "Yes, a bit.", "set": "headache"},
+	{"text": "No, I'm fine.", "set": "fine"}
+  ]},
+  {"if": "headache", "who": "captain", "text": "Drink some water. Glug glug."},
+  {"if": "fine", "who": "captain", "text": "Liar. Whatever. Over."},
+  {"who": "whale", "text": "Hmmmmm. Go. Dock. Hmmmmm."}
+]}

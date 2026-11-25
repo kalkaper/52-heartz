@@ -8,8 +8,8 @@ var loop = 1
 var day = 1
 var lines = []            # every line from the json file
 var line_index = 0        # a bookmark: which line we are on
-var notes = {}            # sticky notes about choices, like {"listened": true}
 var log_lines = []        # every line shown, for the Log page later
+var day_choices = {}      # choices made in THIS call only, used for "if" lines
 var is_typing = false
 var typing_tween = null
 var can_use_52hz = false  # the story will unlock this later
@@ -18,6 +18,7 @@ var can_use_52hz = false  # the story will unlock this later
 var captain_color = Color("2b2118")
 var you_color = Color("785892ff")
 var whale_color = Color("1f4e79")
+var system_color = Color("6b6b6b")
 
 # --- the nodes inside this scene ---
 @onready var text_label = $Text
@@ -41,6 +42,7 @@ func start(loop_number, day_number):
 	day = day_number
 	line_index = 0
 	log_lines.clear()
+	day_choices.clear()
 	clear_choices()
 	text_label.clear()
 	text_label.visible_characters = -1
@@ -52,7 +54,12 @@ func start(loop_number, day_number):
 
 # builds the file name from loop and day, like l1_d1.json, and reads it
 func load_file():
-	var path = "res://assets/dialogues/placeholder_radio_log1.json"
+	var folder = "res://assets/dialogues/"
+	var path = folder + "l" + str(loop) + "_d" + str(day) + ".json"
+	# no file for this day yet: use the placeholder, so the game still runs
+	if not FileAccess.file_exists(path):
+		print("No radio file ", path, ", using the placeholder")
+		path = folder + "placeholder_radio_log1.json"
 	if not FileAccess.file_exists(path):
 		print("Radio file not found: ", path)
 		lines = [{"who": "you", "text": "(missing file: " + path + ")"}]
@@ -87,8 +94,7 @@ func show_next_line():
 func line_is_allowed(line):
 	if not line.has("if"):
 		return true
-	return notes.has(line["if"])
-
+	return day_choices.has(line["if"])
 
 # writes one line under the previous ones
 func show_normal_line(line):
@@ -100,6 +106,8 @@ func show_normal_line(line):
 		ink = whale_color
 	elif who == "captain":
 		ink = captain_color
+	elif who == "system":
+		ink = system_color
 
 	# remember how much text was already there, so only the new line gets typed
 	var old_total = text_label.get_total_character_count()
@@ -150,13 +158,30 @@ func show_choice(options):
 		var button = Button.new()
 		button.text = option["text"]
 		button.custom_minimum_size = Vector2(0, 60)
+		
+		# 1. Remove the dark background and focus box
+		button.flat = true
+		button.focus_mode = Control.FOCUS_NONE
+		
+		# 2. Match the 'you' ink color across all states
+		button.add_theme_color_override("font_color", you_color)
+		button.add_theme_color_override("font_hover_color", you_color)
+		button.add_theme_color_override("font_pressed_color", you_color.darkened(0.2))
+		
+		# 3. Set outline color and toggle outline thickness on hover
+		button.add_theme_color_override("font_outline_color", Color.WHITE) # Change outline color as needed
+		button.add_theme_constant_override("outline_size", 0)
+		button.mouse_entered.connect(func(): button.add_theme_constant_override("outline_size", 4))
+		button.mouse_exited.connect(func(): button.add_theme_constant_override("outline_size", 0))
+		
 		button.pressed.connect(on_choice_pressed.bind(option))
 		choices_container.add_child(button)
 
 
 func on_choice_pressed(option):
 	if option.has("set"):
-		notes[option["set"]] = true
+		GameState.notes[option["set"]] = true
+		day_choices[option["set"]] = true
 	clear_choices()
 	continue_button.show()
 	# her answer is written on the page like any other line
@@ -172,7 +197,8 @@ func clear_choices():
 # --- ending ---
 
 func finish():
-	print("Radio finished. Lines logged: ", log_lines.size())
+	GameState.save_radio_lines(log_lines)
+	print("Radio finished. Lines saved: ", log_lines.size())
 	hide()
 	finished.emit()
 

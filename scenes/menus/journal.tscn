@@ -1,14 +1,20 @@
 [gd_scene format=3 uid="uid://fah3nqhy6ywh"]
 
-[ext_resource type="Texture2D" uid="uid://dm1c0g5r2urrg" path="res://assets/placeholders/images (1).jpg" id="1_12u12"]
 [ext_resource type="Script" uid="uid://cbmp6d7qaabdf" path="res://scripts/menus/journal.gd" id="1_fx3u6"]
 [ext_resource type="PackedScene" uid="uid://cyhut51ucpmps" path="res://scenes/menus/start_page.tscn" id="2_lchmm"]
+[ext_resource type="Texture2D" uid="uid://b4ob43og17wo2" path="res://assets/textures/Journal/Journal.PNG" id="2_oe3x8"]
 [ext_resource type="PackedScene" uid="uid://b54d5mr0ifng7" path="res://scenes/menus/task_page.tscn" id="2_uh075"]
 [ext_resource type="PackedScene" uid="uid://cljmdui1fahyq" path="res://scenes/menus/end_day_page.tscn" id="3_lchmm"]
 [ext_resource type="PackedScene" uid="uid://be14fmylq4muv" path="res://scenes/menus/menu_page.tscn" id="5_7d12n"]
 [ext_resource type="Script" uid="uid://ddhmjubne1w8d" path="res://scripts/menus/task_page.gd" id="5_xpcvn"]
 [ext_resource type="PackedScene" uid="uid://bjpt8ivel76dd" path="res://scenes/menus/log_page.tscn" id="6_fx3u6"]
+[ext_resource type="Script" uid="uid://dnhnt1hldcux5" path="res://scripts/menus/end_day_page.gd" id="7_pq3bq"]
 [ext_resource type="PackedScene" uid="uid://bce0wsp5tlqnc" path="res://scenes/menus/radio_task_view.tscn" id="9_0rcfj"]
+[ext_resource type="Texture2D" uid="uid://dx6n2s3scdwen" path="res://assets/textures/Journal/Button_ArrowLeft.png" id="10_2iera"]
+[ext_resource type="Script" uid="uid://cnoyrosixonlh" path="res://scripts/menus/log_page.gd" id="10_iwhnk"]
+[ext_resource type="Script" uid="uid://b3j0tjc6gkwte" path="res://scripts/menus/texturebutton_autocrop.gd" id="11_oe3x8"]
+[ext_resource type="Texture2D" uid="uid://dnul3li5imss6" path="res://assets/textures/Journal/Button_ArrowRight.png" id="12_oe3x8"]
+[ext_resource type="Texture2D" uid="uid://dvku5qsealf1x" path="res://assets/textures/Journal/Button_X.png" id="13_cl8db"]
 
 [sub_resource type="Theme" id="Theme_0rcfj"]
 default_font_size = 32
@@ -41,13 +47,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -700.0
-offset_top = -400.0
-offset_right = 700.0
-offset_bottom = 400.0
+offset_left = -735.0
+offset_top = -415.0
+offset_right = 688.3334
+offset_bottom = 395.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_12u12")
+scale = Vector2(1.4, 1.4)
+pivot_offset = Vector2(593.92737, 416.5782)
+texture = ExtResource("2_oe3x8")
+expand_mode = 1
 
 [node name="Pages" type="Control" parent="Book" unique_id=112884336]
 propagate_maximum_size = true
@@ -73,28 +82,14 @@ script = ExtResource("5_xpcvn")
 
 [node name="EndDayPage" parent="Book/Pages" unique_id=745357391 instance=ExtResource("3_lchmm")]
 layout_mode = 1
+script = ExtResource("7_pq3bq")
 
 [node name="MenuPage" parent="Book/Pages" unique_id=1220887298 instance=ExtResource("5_7d12n")]
 layout_mode = 1
 
 [node name="LogPage" parent="Book/Pages" unique_id=2013765355 instance=ExtResource("6_fx3u6")]
 layout_mode = 1
-
-[node name="BorderTemporary" type="ColorRect" parent="Book" unique_id=1119155932]
-custom_minimum_size = Vector2(2, 800)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -400.0
-offset_right = -14.0
-offset_bottom = 400.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
+script = ExtResource("10_iwhnk")
 
 [node name="RadioTaskView" parent="." unique_id=477646471 instance=ExtResource("9_0rcfj")]
 visible = false
@@ -103,54 +98,24 @@ layout_mode = 1
 [node name="PrevButton" type="TextureButton" parent="." unique_id=1270128284]
 custom_minimum_size = Vector2(160, 60)
 layout_mode = 0
-offset_left = 300.0
-offset_top = 840.0
-offset_right = 511.0
-offset_bottom = 900.0
-
-[node name="PrevButtonLabel" type="RichTextLabel" parent="PrevButton" unique_id=2026607335]
-custom_minimum_size = Vector2(160, 60)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -80.0
-offset_top = -30.0
-offset_right = 131.0
-offset_bottom = 30.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 32
-text = "Previous Page"
+offset_left = 63.0
+offset_top = 864.00006
+offset_right = 591.0
+offset_bottom = 1120.0
+scale = Vector2(0.6, 0.6)
+texture_normal = ExtResource("10_2iera")
+script = ExtResource("11_oe3x8")
 
 [node name="NextButton" type="TextureButton" parent="." unique_id=287878523]
 custom_minimum_size = Vector2(160, 60)
 layout_mode = 0
-offset_left = 1410.0
-offset_top = 840.0
-offset_right = 1621.0
-offset_bottom = 900.0
-
-[node name="NextButtonLabel" type="RichTextLabel" parent="NextButton" unique_id=247021471]
-custom_minimum_size = Vector2(160, 60)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -80.0
-offset_top = -30.0
-offset_right = 80.0
-offset_bottom = 30.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 32
-text = "Next Page"
+offset_left = 1713.0001
+offset_top = 873.0
+offset_right = 1966.0001
+offset_bottom = 1120.0
+scale = Vector2(0.6, 0.6)
+texture_normal = ExtResource("12_oe3x8")
+script = ExtResource("11_oe3x8")
 
 [node name="CloseButtons" type="Button" parent="." unique_id=972921347]
 visible = false
@@ -172,29 +137,12 @@ text = "X"
 [node name="CloseButton" type="TextureButton" parent="." unique_id=1709892658]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 0
-offset_left = 1578.0
-offset_top = 142.0
-offset_right = 1658.0
-offset_bottom = 222.0
-
-[node name="CloseButtonLabel" type="RichTextLabel" parent="CloseButton" unique_id=1790179825]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -40.0
-offset_top = -40.0
-offset_right = 24.0
-offset_bottom = 24.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 48
-text = "X"
-scroll_active = false
-horizontal_alignment = 1
+offset_left = 1716.0
+offset_top = 58.0
+offset_right = 1969.0
+offset_bottom = 305.0
+scale = Vector2(0.6, 0.6)
+texture_normal = ExtResource("13_cl8db")
+script = ExtResource("11_oe3x8")
 
 [connection signal="pressed" from="PrevButton" to="." method="_on_prev_button_pressed"]

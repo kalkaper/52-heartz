@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://wu4l123kgle8"]
+
+[ext_resource type="Script" uid="uid://coaraqxnhhbk0" path="res://scripts/world/radio_room.gd" id="1_v4bka"]
+[ext_resource type="PackedScene" uid="uid://crgodtyb5jia" path="res://scenes/world/template_spot.tscn" id="2_a31bw"]
+
+[node name="Bedroom" type="Control" unique_id=616402177]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_v4bka")
+
+[node name="Background" type="TextureRect" parent="." unique_id=2141735496]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ObjectSpots" type="Control" parent="." unique_id=504703285]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="WindowSpot" parent="ObjectSpots" unique_id=1796644731 instance=ExtResource("2_a31bw")]
+layout_mode = 0
+offset_left = 1306.0
+offset_top = 333.0
+offset_right = 1366.0
+offset_bottom = 393.0
+choice_texts = Array[String](["Look outside?"])
+choice_actions = Array[String](["inspect_window"])
+
+[node name="DoorSpot" parent="ObjectSpots" unique_id=1136454035 instance=ExtResource("2_a31bw")]
+layout_mode = 0
+offset_left = 154.0
+offset_top = 613.0
+offset_right = 214.0
+offset_bottom = 673.0
+choice_texts = Array[String](["Go to the Bedoom?"])
+choice_actions = Array[String](["go_bedroom"])
+
+[node name="ChoicesWhenObjectHovered" type="VBoxContainer" parent="." unique_id=1785295596]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Timer" type="Timer" parent="." unique_id=608953808]

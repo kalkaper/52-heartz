@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://6e377w06kynl"]
+
+[ext_resource type="Script" uid="uid://bligi7rc0cal1" path="res://scripts/world/first_floor_room.gd" id="1_qknrn"]
+[ext_resource type="PackedScene" uid="uid://crgodtyb5jia" path="res://scenes/world/template_spot.tscn" id="2_osybt"]
+
+[node name="FirstFloorRoom" type="Control" unique_id=616402177]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_qknrn")
+
+[node name="Background" type="TextureRect" parent="." unique_id=2141735496]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ObjectSpots" type="Control" parent="." unique_id=504703285]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="StaircaseUp" parent="ObjectSpots" unique_id=1620532964 instance=ExtResource("2_osybt")]
+layout_mode = 0
+offset_left = 1330.0
+offset_top = 729.0
+offset_right = 1390.0
+offset_bottom = 789.0
+choice_texts = Array[String](["Go Above"])
+choice_actions = Array[String](["go_above"])
+
+[node name="OutsideDoor" parent="ObjectSpots" unique_id=689575039 instance=ExtResource("2_osybt")]
+layout_mode = 0
+offset_left = 286.0
+offset_top = 580.0
+offset_right = 346.0
+offset_bottom = 640.0
+choice_texts = Array[String](["Go Outside"])
+choice_actions = Array[String](["go_outside"])
+
+[node name="ChoicesWhenObjectHovered" type="VBoxContainer" parent="." unique_id=1785295596]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Timer" type="Timer" parent="." unique_id=608953808]

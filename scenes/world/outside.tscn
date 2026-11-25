@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://c4whtf2h5ds20"]
+
+[ext_resource type="Script" uid="uid://c7thjtguqc4fe" path="res://scripts/world/outside.gd" id="1_qetms"]
+[ext_resource type="PackedScene" uid="uid://crgodtyb5jia" path="res://scenes/world/template_spot.tscn" id="2_k3n2k"]
+[ext_resource type="Texture2D" uid="uid://brhmkgjpmu43m" path="res://assets/textures/OutsideScene/Daytime_map.png" id="2_wp30f"]
+[ext_resource type="Texture2D" uid="uid://bmkmino4t20no" path="res://assets/textures/OutsideScene/Dock (yummy chocolate).png" id="4_wp30f"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_k3n2k"]
+load_path = "res://.godot/imported/Lighthouse (candy cane yummy) .png-6bd88f24ad5d1f6f929eaaf2aaeaa3b7.ctex"
+
+[node name="Outside" type="Control" unique_id=616402177]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_qetms")
+
+[node name="Background" type="TextureRect" parent="." unique_id=2141735496]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_wp30f")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ObjectSpots" type="Control" parent="." unique_id=504703285]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Lighthouse" parent="ObjectSpots" unique_id=1620532964 instance=ExtResource("2_k3n2k")]
+layout_mode = 0
+offset_left = 263.00003
+offset_top = -5.0000005
+offset_right = 2263.0
+offset_bottom = 1582.0
+scale = Vector2(0.7, 0.7)
+texture_normal = SubResource("CompressedTexture2D_k3n2k")
+ignore_texture_size = false
+stretch_mode = 3
+choice_texts = Array[String](["Back to Lighthouse"])
+choice_actions = Array[String](["go_lighthouse"])
+menu_offset = Vector2(-256, 128)
+
+[node name="Dock" parent="ObjectSpots" unique_id=689575039 instance=ExtResource("2_k3n2k")]
+layout_mode = 0
+offset_left = 271.0
+offset_top = -14.0
+offset_right = 2271.0
+offset_bottom = 1573.0
+scale = Vector2(0.7, 0.7)
+texture_normal = ExtResource("4_wp30f")
+ignore_texture_size = false
+choice_texts = Array[String](["Go To Dock"])
+choice_actions = Array[String](["go_dock"])
+menu_offset = Vector2(-80, 0)
+
+[node name="ChoicesWhenObjectHovered" type="VBoxContainer" parent="." unique_id=1785295596]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Timer" type="Timer" parent="." unique_id=608953808]

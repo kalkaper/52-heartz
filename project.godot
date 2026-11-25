@@ -13,6 +13,10 @@ config_version=5
 run/main_scene="uid://csduek12cj5po"
 config/features=PackedStringArray("4.7")
 
+[autoload]
+
+GameState="*uid://d2mnawv84muys"
+
 [display]
 
 window/size/viewport_width=1920

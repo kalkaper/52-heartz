@@ -1,6 +1,7 @@
+RichTextLabel
+VBoxContainer
 Label
 TextureButton
-RichTextLabel
 TextureRect
 Panel
 ColorRect
@@ -8,7 +9,6 @@ CollisionPolygon2D
 Area2D
 Control
 Timer
-VBoxContainer
 AudioStreamPlayer
 Button
 HBoxContainer

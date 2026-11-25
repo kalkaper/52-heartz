@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://phri7v1w502k"]
+
+[ext_resource type="Script" uid="uid://duvjsopilrtsw" path="res://scripts/world/lamp_room.gd" id="1_e8eni"]
+[ext_resource type="PackedScene" uid="uid://crgodtyb5jia" path="res://scenes/world/template_spot.tscn" id="2_li452"]
+[ext_resource type="Texture2D" uid="uid://cwobdhh3b6nkf" path="res://assets/textures/Lamproom/lamp_room_dark.png" id="2_qac6c"]
+[ext_resource type="Script" uid="uid://rj776e2eynr2" path="res://scripts/world/template_spot_buttononly.gd" id="4_oh2ao"]
+[ext_resource type="Texture2D" uid="uid://dx6n2s3scdwen" path="res://assets/textures/Journal/Button_ArrowLeft.png" id="4_x3esq"]
+[ext_resource type="Texture2D" uid="uid://doautjxllibwi" path="res://assets/textures/Lamproom/lamp.png" id="5_oh2ao"]
+
+[node name="LampRoom" type="Control" unique_id=616402177]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_e8eni")
+
+[node name="Background" type="TextureRect" parent="." unique_id=2141735496]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_qac6c")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ObjectSpots" type="Control" parent="." unique_id=504703285]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="StaircaseDown" parent="ObjectSpots" unique_id=1620532964 instance=ExtResource("2_li452")]
+layout_mode = 0
+offset_left = 558.0
+offset_top = 773.0
+offset_right = 811.0
+offset_bottom = 1020.0
+rotation = -1.5707964
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("4_x3esq")
+ignore_texture_size = false
+stretch_mode = 5
+script = ExtResource("4_oh2ao")
+choice_texts = Array[String](["Go Below"])
+choice_actions = Array[String](["go_below"])
+hover_scale = Vector2(1.08, 1.08)
+scale_duration = 0.12
+
+[node name="LampSpot" parent="ObjectSpots" unique_id=689575039 instance=ExtResource("2_li452")]
+layout_mode = 0
+offset_left = 733.0
+offset_top = 326.0
+offset_right = 1306.0
+offset_bottom = 1434.0
+scale = Vector2(0.7, 0.7)
+texture_normal = ExtResource("5_oh2ao")
+ignore_texture_size = false
+stretch_mode = 3
+choice_texts = Array[String](["Go Below"])
+choice_actions = Array[String](["go_below"])
+
+[node name="ChoicesWhenObjectHovered" type="VBoxContainer" parent="." unique_id=1785295596]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Timer" type="Timer" parent="." unique_id=608953808]
