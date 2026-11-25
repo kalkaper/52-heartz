@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://j8kiu32pe8el"]
+
+[ext_resource type="Script" uid="uid://dufhg0tp6aomr" path="res://scripts/tasks/extra_task_3.gd" id="1_kgeo3"]
+
+[node name="ExtraTask3" type="Control" unique_id=346958094]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kgeo3")
+
+[node name="Success" type="Label" parent="." unique_id=2061785111]
+layout_mode = 0
+offset_left = 792.0
+offset_right = 1253.0
+offset_bottom = 88.0
+theme_override_font_sizes/font_size = 64
+text = "Task completed!"
+horizontal_alignment = 1
+
+[node name="Slider" type="Control" parent="." unique_id=77056418]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SliderTrack" type="ColorRect" parent="Slider" unique_id=469328461]
+layout_mode = 0
+offset_left = 1016.0
+offset_top = 320.0
+offset_right = 1032.0
+offset_bottom = 832.0
+color = Color(0.5019608, 0.5019608, 0.5019608, 1)
+
+[node name="SliderBar" type="ColorRect" parent="Slider" unique_id=158035848]
+layout_mode = 0
+offset_left = 1000.0
+offset_top = 752.0
+offset_right = 1048.0
+offset_bottom = 768.0
+
+[node name="SliderFilled" type="ColorRect" parent="Slider" unique_id=471821014]
+layout_mode = 0
+offset_left = 1016.0
+offset_top = 768.0
+offset_right = 1032.0
+offset_bottom = 832.0
+color = Color(0.7529412, 0.7529412, 0.7529412, 1)
+
+[node name="SliderTarget" type="ColorRect" parent="Slider" unique_id=671332187]
+layout_mode = 0
+offset_left = 984.0
+offset_top = 560.0
+offset_right = 1064.0
+offset_bottom = 592.0
+color = Color(1, 0, 0, 1)

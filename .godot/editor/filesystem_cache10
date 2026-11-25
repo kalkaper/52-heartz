@@ -1,5 +1,5 @@
 78098b89c88a74ebe8c20117b8754620
-::res://::1795529504
+::res://::1795620397
 README.md::TextFile::-1::1794922869::0::1::::<><><>0<>0<><>::
 ::res://assets/::1795440132
 ::res://assets/audio/::1794921115
@@ -34,9 +34,11 @@ top_bar.tscn::PackedScene::5774716278930963741::1795440132::0::1::::<><><>0<>0<>
 placeholder.txt::TextFile::-1::1795063610::0::1::::<><><>0<>0<><>::
 ::res://scenes/player/::1795063616
 placeholder.txt::TextFile::-1::1795063610::0::1::::<><><>0<>0<><>::
-::res://scenes/tasks/::1795449431
+::res://scenes/tasks/::1795537761
 change_lamp.tscn::PackedScene::5424573640049180638::1795449431::0::1::::<><><>0<>0<><>::uid://s5mrsy4siuyr::::res://scripts/tasks/change_lamp.gd
 charge_radio.tscn::PackedScene::8620455703095046302::1795443857::0::1::::<><><>0<>0<><>::uid://brxw10mjk3o30::::res://scripts/tasks/charge_radio.gd
+extra_task_1.tscn::PackedScene::6216125551696929628::1795537756::0::1::::<><><>0<>0<><>::uid://dl7yxc7antcmm::::res://scripts/tasks/extra_task_1.gd
+extra_task_2.tscn::PackedScene::8444943851731921133::1795537761::0::1::::<><><>0<>0<><>::uid://c4ffc8mtr0dce::::res://scripts/tasks/extra_task_2.gd
 make_bed.tscn::PackedScene::8751300921898211268::1795447536::0::1::::<><><>0<>0<><>::uid://dt3hcudfx8uob::::res://scripts/tasks/make_bed.gd<>uid://c2mes8ciykfbh::::res://assets/placeholders/placeholdervertical.jpg
 ::res://scenes/whale/::1795063618
 placeholder.txt::TextFile::-1::1795063610::0::1::::<><><>0<>0<><>::
@@ -57,9 +59,11 @@ top_bar.gd::GDScript::7565282158872292279::1795440132::0::1::::<>VBoxContainer<>
 placeholder.txt::TextFile::-1::1795063613::0::1::::<><><>0<>0<><>::
 ::res://scripts/player/::1795063626
 placeholder.txt::TextFile::-1::1795063613::0::1::::<><><>0<>0<><>::
-::res://scripts/tasks/::1795449431
+::res://scripts/tasks/::1795537756
 change_lamp.gd::GDScript::1326090464353585297::1795449431::0::1::::<>Control<><>0<>0<><>::
 charge_radio.gd::GDScript::3628495250410222377::1795443882::0::1::::<>Node<><>0<>0<><>::
+extra_task_1.gd::GDScript::7998897854812343444::1795537624::0::1::::<>Control<><>0<>0<><>::
+extra_task_2.gd::GDScript::6818948630906266892::1795537756::0::1::::<>Control<><>0<>0<><>::
 make_bed.gd::GDScript::8551082303213416837::1795449345::0::1::::<>Control<><>0<>0<><>::
 ::res://scripts/whale/::1795063627
 placeholder.txt::TextFile::-1::1795063613::0::1::::<><><>0<>0<><>::

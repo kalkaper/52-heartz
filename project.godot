@@ -10,6 +10,7 @@ config_version=5
 
 [application]
 
+config/name="52 Heartz"
 run/main_scene="uid://csduek12cj5po"
 config/features=PackedStringArray("4.7")
 
