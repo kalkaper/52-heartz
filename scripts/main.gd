@@ -243,3 +243,7 @@ func _unhandled_input(event):
 		GameState.is_night = false
 		top_bar.set_day(GameState.day)
 		load_room(bedroom_path)	
+
+#this will play credit, still cant be used
+func go_to_credits():
+	get_tree().change_scene_to_file(Story.CREDITS_SCENE)

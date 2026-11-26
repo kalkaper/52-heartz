@@ -21,3 +21,4 @@ res://scripts/autoloads/game_state.gd
 res://assets/dialogues/l1_d2.json
 res://assets/dialogues/l1_d3.json
 res://scenes/tasks/change_lamp.tscn
+res://scenes/tasks/extra_task_4.tscn

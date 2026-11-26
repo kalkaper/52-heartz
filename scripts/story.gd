@@ -11,6 +11,10 @@ const DOCK = "res://scenes/world/dock.tscn"   # doesn't exist yet -> shows place
 const LAMP_ROOM = "res://scenes/world/lamp_room.tscn"
 const TASK_DONE_TEXT = "You finished the task"
 const TASK_DONE_SECONDS = 2.0
+const MENU_SCENE = "res://scenes/menus/main_menu.tscn"
+const GAME_SCENE = "res://scenes/main.tscn"
+const CREDITS_SCENE = "res://scenes/menus/credits.tscn"
+
 
 # the 6 unique tasks. "scene" = the popup scene the other programmer makes ("" = click finishes it)
 const TASKS = {
@@ -24,6 +28,10 @@ const TASKS = {
 		"room": BEDROOM, "spots": ["WhiteboardSpot", "BookpileSpot"], "choice": "Clean off the dust?"},
 	"extra_task_2": {"title": "Tune the frequency", "scene": "res://scenes/tasks/extra_task_2.tscn",
 		"room": RADIO_ROOM, "spots": ["RadioSpot"], "choice": "Tune the frequency?"},
+	"extra_task_3": {"title": "Adjust the hinge", "scene": "res://scenes/tasks/extra_task_3.tscn",
+		"room": BEDROOM, "spots": ["Locker2Spot"], "choice": "Adjust the hinge?"},
+	"extra_task_4": {"title": "Unlock Locker", "scene": "res://scenes/tasks/extra_task_4.tscn",
+		"room": BEDROOM, "spots": ["Locker1Spot"], "choice": "Unlock the Locker?"},
 }
 
 # the daily radio call is not in TASKS (it is never picked at random), but it also lives on an object
@@ -203,7 +211,25 @@ const DAYS = {
 		"freq52": "forced",
 	},
 	"3_4": {
-		"tasks": ["charge_radio", "change_lamp", "extra_task_1", "radio"],
+		"tasks": ["charge_radio", "extra_task_3", "radio"],
+		"blocked": ["charge_radio", "change_lamp", "extra_task_1"],
+		"radio_title": "[DISTRESS] Daily radio call",
+		"lamp_choice": true,
+		"lamp_yes": LAMP_YES,
+		"lamp_no": LAMP_NO,
+		"storm" : true,
+	},
+	"3_5": {
+		"tasks": ["extra_task_1", "radio"],
+		"blocked": ["charge_radio", "change_lamp", "extra_task_1"],
+		"radio_title": "[DISTRESS] Daily radio call",
+		"lamp_choice": true,
+		"lamp_yes": LAMP_YES,
+		"lamp_no": LAMP_NO,
+		"storm" : true,
+	},
+	"3_6": {
+		"tasks": ["extra_task_4", "radio"],
 		"blocked": ["charge_radio", "change_lamp", "extra_task_1"],
 		"radio_title": "[DISTRESS] Daily radio call",
 		"lamp_choice": true,

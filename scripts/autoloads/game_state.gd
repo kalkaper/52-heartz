@@ -68,3 +68,15 @@ func get_freq52_lines(day_number):
 	if freq52_logs.has(day_number):
 		return freq52_logs[day_number]
 	return []
+# a fresh game. The main menu's Play button and the end of the credits call this
+func reset():
+	loop = 1
+	day = 1
+	done_tasks.clear()
+	notes.clear()
+	day_flags.clear()
+	radio_logs.clear()
+	freq52_logs.clear()
+	has_journal = false
+	is_night = false
+	current_room = ""

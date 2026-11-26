@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://besesp6q3675p"]
+
+[ext_resource type="Script" uid="uid://cg05042ay8nwk" path="res://scripts/tasks/extra_task_4.gd" id="1_mv6nf"]
+
+[node name="ExtraTask4" type="Control" unique_id=1688739077]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mv6nf")
+
+[node name="Success" type="Label" parent="." unique_id=942479915]
+layout_mode = 0
+offset_left = 792.0
+offset_right = 1253.0
+offset_bottom = 88.0
+theme_override_font_sizes/font_size = 64
+text = "Task completed!"
+horizontal_alignment = 1
+
+[node name="Warning" type="Label" parent="." unique_id=721330697]
+layout_mode = 0
+offset_left = 488.0
+offset_top = 88.0
+offset_right = 1552.0
+offset_bottom = 176.0
+theme_override_font_sizes/font_size = 48
+text = "Please swipe card"
+horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=798661574]
+layout_mode = 0
+offset_left = 704.0
+offset_top = 400.0
+offset_right = 1344.0
+offset_bottom = 440.0
+
+[node name="Card" type="ColorRect" parent="." unique_id=2015965187]
+layout_mode = 0
+offset_left = 576.0
+offset_top = 320.0
+offset_right = 832.0
+offset_bottom = 512.0
+color = Color(0, 1, 0, 1)
+
+[node name="TopSwiper" type="ColorRect" parent="." unique_id=842226863]
+layout_mode = 0
+offset_left = 704.0
+offset_top = 192.0
+offset_right = 1344.0
+offset_bottom = 384.0
