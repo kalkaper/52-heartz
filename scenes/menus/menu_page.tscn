@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://be14fmylq4muv"]
 
+[ext_resource type="Script" uid="uid://hqfqhy0jkpey" path="res://scripts/menus/menu_page.gd" id="1_wfxmw"]
+
 [node name="MenuPage" type="Control" unique_id=1151222236]
 layout_mode = 3
 anchors_preset = 15
@@ -7,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_wfxmw")
 
 [node name="Title" type="Label" parent="." unique_id=1248509989]
 layout_mode = 0
@@ -16,3 +19,14 @@ offset_right = 397.0
 offset_bottom = 166.0
 theme_override_font_sizes/font_size = 48
 text = "Menu"
+
+[node name="QuitGame" type="Label" parent="." unique_id=183465179]
+layout_mode = 0
+offset_left = 180.0
+offset_top = 180.0
+offset_right = 522.0
+offset_bottom = 223.0
+mouse_filter = 0
+text = "Quit Game
+(WARNING! This will reset your progress)"
+autowrap_mode = 2

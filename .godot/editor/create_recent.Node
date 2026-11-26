@@ -1,10 +1,11 @@
+LinkButton
 TextureRect
+ColorRect
 RichTextLabel
-VBoxContainer
 Label
 TextureButton
+VBoxContainer
 Panel
-ColorRect
 CollisionPolygon2D
 Area2D
 Control

@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://dc3ltq5elph4c"]
+
+[ext_resource type="Script" uid="uid://cgb6n7c74j0ph" path="res://scripts/menus/main_menu.gd" id="1_ovrgc"]
+[ext_resource type="Texture2D" uid="uid://bh1higqqh2ju1" path="res://assets/textures/Journal/ButtonEmpty.png" id="2_2o76q"]
+[ext_resource type="Texture2D" uid="uid://c2gymivo7xhrq" path="res://assets/textures/Background/main_menu.jpeg" id="2_6bivr"]
+[ext_resource type="Script" uid="uid://b3j0tjc6gkwte" path="res://scripts/menus/texturebutton_autocrop.gd" id="4_6bivr"]
+
+[node name="MainMenu" type="Control" unique_id=908687645]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ovrgc")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1959176557]
+layout_mode = 0
+offset_left = 280.0
+offset_right = 1640.7999
+offset_bottom = 1080.0
+texture = ExtResource("2_6bivr")
+expand_mode = 1
+
+[node name="PlayButton" type="TextureButton" parent="." unique_id=1886003398]
+visible = false
+layout_mode = 0
+offset_left = 768.0
+offset_top = 328.0
+offset_right = 1296.0
+offset_bottom = 584.0
+scale = Vector2(0.75, 0.75)
+texture_normal = ExtResource("2_2o76q")
+script = ExtResource("4_6bivr")
+
+[node name="QuitButton" type="TextureButton" parent="." unique_id=384066762]
+visible = false
+layout_mode = 0
+offset_left = 768.00006
+offset_top = 576.0
+offset_right = 1296.0
+offset_bottom = 832.0
+scale = Vector2(0.75, 0.75)
+texture_normal = ExtResource("2_2o76q")
+script = ExtResource("4_6bivr")
+
+[node name="PlayText" type="LinkButton" parent="." unique_id=766819760]
+layout_mode = 0
+offset_left = 888.0
+offset_top = 440.0
+offset_right = 1034.0
+offset_bottom = 517.0
+theme_override_font_sizes/font_size = 64
+text = "Play"
+underline = 1
+
+[node name="QuitText" type="LinkButton" parent="." unique_id=1162380069]
+layout_mode = 0
+offset_left = 896.0
+offset_top = 568.0
+offset_right = 1029.0
+offset_bottom = 645.0
+theme_override_font_sizes/font_size = 64
+text = "Quit"
+underline = 1

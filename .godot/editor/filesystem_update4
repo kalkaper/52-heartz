@@ -1,24 +1,16 @@
-res://scenes/world/radio_room.tscn
+res://scenes/menus/menu_page.tscn
 res://assets/shaders/outline.gdshader
 res://assets/shaders/underwater_whale_eye.gdshader
 res://assets/shaders/wind.gdshader
-res://scenes/world/bedroom.tscn
-res://scripts/story.gd
-res://scripts/world/room_base.gd
-res://scripts/world/bedroom_back.gd
-res://scripts/menus/task_page.gd
-res://scripts/menus/journal.gd
-res://scripts/main.gd
-res://scenes/world/lamp_room.tscn
-res://scenes/world/first_floor_room.tscn
-res://scenes/tasks/extra_task_2.tscn
-res://scripts/tasks/extra_task_2.gd
-res://assets/textures/Bedroom/Outside view_sea_day.png
-res://assets/textures/Bedroom/outside view_sea_day.png
-res://scenes/world/outside.tscn
-res://scripts/world/outside.gd
-res://scripts/autoloads/game_state.gd
-res://assets/dialogues/l1_d2.json
-res://assets/dialogues/l1_d3.json
-res://scenes/tasks/change_lamp.tscn
-res://scenes/tasks/extra_task_4.tscn
+res://scenes/menus/task_page.tscn
+res://scripts/menus/menu_page.gd
+res://scenes/main_menu.tscn
+res://scripts/save_manager.gd
+res://scenes/menus/main_menu.tscn
+res://scripts/menus/main_menu.gd
+res://scenes/menus/journal.tscn
+res://scenes/world/credit_roll.tscn
+res://scripts/world/credit_roll.gd
+res://scenes/menus/play_button.gd
+res://scenes/menus/main_menu_button.gd
+res://scripts/menus/play_button.gd

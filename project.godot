@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-run/main_scene="uid://csduek12cj5po"
+run/main_scene="uid://dc3ltq5elph4c"
 config/features=PackedStringArray("4.7")
 
 [autoload]

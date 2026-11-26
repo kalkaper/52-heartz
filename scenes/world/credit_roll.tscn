@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://2eyt5j6wxleb"]
+
+[ext_resource type="Script" uid="uid://csweor3yvr6v" path="res://scripts/world/credit_roll.gd" id="1_t16v7"]
+[ext_resource type="Texture2D" uid="uid://clsaych24po8f" path="res://assets/textures/Visions/stormy_spooky_nightmare_idk.png" id="2_jqwat"]
+
+[node name="CreditRoll" type="Control" unique_id=85404383]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t16v7")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1384518520]
+layout_mode = 0
+offset_top = -488.0
+offset_right = 2000.0
+offset_bottom = 1090.0
+texture = ExtResource("2_jqwat")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=947565728]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 1080.0
+offset_right = 1680.0
+offset_bottom = 3005.0
+theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/bold_font_size = 64
+bbcode_enabled = true
+text = "[b]Thank you for playing![/b]
+
+Credits:
+
+Game Production
+Producer: Beoli (022)
+
+Game Design
+Main Designer: Syasya (152)
+Support Designer: Beoli (022)
+
+Visual Art
+Lead Visual Art: Shu (074)
+Executing Visual Art: Syasya (152), Fira (103), Cal (012), & Sammy (227)
+
+Audio Art
+Audio Artists: Nipsty (257) & Moni (247)
+
+Writing
+Writer: Ila (161)
+
+Programming
+Programmer: Kalif (179) & Beoli (022)
+
+
+Last but not least...
+
+
+Our beloved mama & papa: Shiba & Rafeb"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
