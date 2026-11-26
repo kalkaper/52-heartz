@@ -3,6 +3,8 @@ extends Control
 
 # rooms shout this when the player wants to go somewhere else
 signal room_change_requested(scene_path)
+signal task_requested(task_id)    # main.gd opens the task
+signal montage_requested(steps)   # main.gd plays it (3 second inspect texts, etc.)
 
 # --- how the choice text looks ---
 @export var choice_font: Font
@@ -39,10 +41,10 @@ func on_spot_hovered(spot):
 		current_spot.hide_outline()
 	current_spot = spot
 	spot.show_outline()
-	if spot.choice_texts.size() == 0:
+	build_menu(spot)
+	if menu.get_child_count() == 0:
 		menu.hide()
 		return
-	build_menu(spot)
 	menu.global_position = spot.get_menu_position()
 	menu.show()
 	# wait one frame so the menu knows its size, then keep it on the screen
@@ -93,35 +95,49 @@ func build_menu(spot):
 		var action = ""
 		if i < spot.choice_actions.size():
 			action = spot.choice_actions[i]
-		var button = Button.new()
-		button.text = spot.choice_texts[i]
-		button.flat = true
-		button.focus_mode = Control.FOCUS_NONE
-		button.alignment = HORIZONTAL_ALIGNMENT_LEFT
-		if choice_font != null:
-			button.add_theme_font_override("font", choice_font)
-		button.add_theme_font_size_override("font_size", choice_font_size)
-		button.add_theme_color_override("font_color", normal_color)
-		button.add_theme_color_override("font_hover_color", hover_color)
-		button.add_theme_color_override("font_pressed_color", hover_color)
-		button.add_theme_color_override("font_outline_color", outline_color)
-		button.add_theme_constant_override("outline_size", 8)
-		button.mouse_entered.connect(on_menu_mouse_entered)
-		button.mouse_exited.connect(on_menu_mouse_exited)
-		button.pressed.connect(on_choice_chosen.bind(action))
-		menu.add_child(button)
+		add_choice(spot.choice_texts[i], action)
+	# tasks that can be done at this object today
+	for task_id in Story.tasks_at(GameState.loop, GameState.day, scene_file_path, spot.name):
+		add_choice(Story.task_def(task_id)["choice"], "task:" + task_id)
+
+
+func add_choice(text, action):
+	var button = Button.new()
+	button.text = text
+	button.flat = true
+	button.focus_mode = Control.FOCUS_NONE
+	button.alignment = HORIZONTAL_ALIGNMENT_LEFT
+	if choice_font != null:
+		button.add_theme_font_override("font", choice_font)
+	button.add_theme_font_size_override("font_size", choice_font_size)
+	button.add_theme_color_override("font_color", normal_color)
+	button.add_theme_color_override("font_hover_color", hover_color)
+	button.add_theme_color_override("font_pressed_color", hover_color)
+	button.add_theme_color_override("font_outline_color", outline_color)
+	button.add_theme_constant_override("outline_size", 8)
+	button.mouse_entered.connect(on_menu_mouse_entered)
+	button.mouse_exited.connect(on_menu_mouse_exited)
+	button.pressed.connect(on_choice_chosen.bind(action))
+	menu.add_child(button)
+
+
+func on_choice_chosen(action):
+	mouse_on_menu = false
+	close_menu()
+	if action.begins_with("task:"):
+		task_requested.emit(action.trim_prefix("task:"))
+		return
+	var steps = Story.inspect_steps(action)
+	if steps.size() > 0:
+		montage_requested.emit(steps)
+		return
+	handle_action(action)
 
 
 func clear_menu():
 	for child in menu.get_children():
 		menu.remove_child(child)
 		child.queue_free()
-
-
-func on_choice_chosen(action):
-	mouse_on_menu = false
-	close_menu()
-	handle_action(action)
 
 
 # every room fills this in with its own choices

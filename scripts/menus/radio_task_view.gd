@@ -2,7 +2,7 @@ extends Control
 
 # the radio tells the journal "I'm done" with this signal
 signal finished
-
+signal montage_requested(key)
 # --- things the radio remembers ---
 var loop = 1
 var day = 1
@@ -10,6 +10,7 @@ var lines = []            # every line from the json file
 var line_index = 0        # a bookmark: which line we are on
 var log_lines = []        # every line shown, for the Log page later
 var day_choices = {}      # choices made in THIS call only, used for "if" lines
+var call_mode = "normal"   # "normal" or "52"
 var is_typing = false
 var typing_tween = null
 var can_use_52hz = false  # the story will unlock this later
@@ -34,12 +35,16 @@ func _ready():
 	# the text box scrolls with the mouse wheel, and follows the newest line
 	text_label.scroll_active = true
 	text_label.scroll_following = true
-
+	# choices sit exactly under the text, same width
+	choices_container.position.x = text_label.position.x
+	choices_container.custom_minimum_size.x = text_label.size.x
+	choices_container.size.x = text_label.size.x
 
 # the journal calls this to start a conversation
-func start(loop_number, day_number):
+func start(loop_number, day_number, mode = "normal"):
 	loop = loop_number
 	day = day_number
+	call_mode = mode
 	line_index = 0
 	log_lines.clear()
 	day_choices.clear()
@@ -48,6 +53,8 @@ func start(loop_number, day_number):
 	text_label.visible_characters = -1
 	button_52hz.visible = can_use_52hz
 	load_file()
+	if call_mode == "52":
+		lines.push_front({"who": "system", "text": "Radio Frequency Changed to 52-Hz"})
 	show()
 	show_next_line()
 
@@ -55,11 +62,20 @@ func start(loop_number, day_number):
 # builds the file name from loop and day, like l1_d1.json, and reads it
 func load_file():
 	var folder = "res://assets/dialogues/"
-	var path = folder + "l" + str(loop) + "_d" + str(day) + ".json"
-	# no file for this day yet: use the placeholder, so the game still runs
+	var suffix = ""
+	var fallback = "placeholder_radio_log1.json"
+	if call_mode == "52":
+		suffix = "_52"
+		fallback = "placeholder_52hz.json"
+	var path = folder + "l" + str(loop) + "_d" + str(day) + suffix + ".json"
+	# no file for this loop? use the same day from an earlier loop (she remembers it)
+	var look_loop = loop
+	while not FileAccess.file_exists(path) and look_loop > 1:
+		look_loop -= 1
+		path = folder + "l" + str(look_loop) + "_d" + str(day) + suffix + ".json"
 	if not FileAccess.file_exists(path):
-		print("No radio file ", path, ", using the placeholder")
-		path = folder + "placeholder_radio_log1.json"
+		print("No radio file ", path, ", using ", fallback)
+		path = folder + fallback
 	if not FileAccess.file_exists(path):
 		print("Radio file not found: ", path)
 		lines = [{"who": "you", "text": "(missing file: " + path + ")"}]
@@ -71,7 +87,6 @@ func load_file():
 		lines = [{"who": "you", "text": "(broken file: " + path + ")"}]
 		return
 	lines = data["lines"]
-
 
 # --- showing lines ---
 
@@ -85,6 +100,10 @@ func show_next_line():
 		return
 	var line = lines[line_index]
 	line_index += 1
+	if line.has("montage"):
+		continue_button.hide()
+		montage_requested.emit(line["montage"])
+		return
 	if line.has("choice"):
 		show_choice(line["choice"])
 	else:
@@ -158,7 +177,9 @@ func show_choice(options):
 		var button = Button.new()
 		button.text = option["text"]
 		button.custom_minimum_size = Vector2(0, 60)
-		
+		button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		button.alignment = HORIZONTAL_ALIGNMENT_LEFT
+		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL		
 		# 1. Remove the dark background and focus box
 		button.flat = true
 		button.focus_mode = Control.FOCUS_NONE
@@ -197,7 +218,15 @@ func clear_choices():
 # --- ending ---
 
 func finish():
-	GameState.save_radio_lines(log_lines)
+	if call_mode == "52":
+		GameState.save_freq52_lines(day, log_lines)
+	else:
+		# in a later loop, the log is filled like before she died (the previous loop's version)
+		var before = GameState.get_radio_lines(loop - 1, day)
+		if before.size() > 0:
+			GameState.save_radio_lines(before)
+		else:
+			GameState.save_radio_lines(log_lines)
 	print("Radio finished. Lines saved: ", log_lines.size())
 	hide()
 	finished.emit()

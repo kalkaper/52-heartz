@@ -1,0 +1,7 @@
+{"lines": [
+  {"who": "whale", "text": "You killed a human. Do you feel it?"},
+  {"who": "you", "text": "I did not mean to."},
+  {"who": "whale", "text": "We can rewind. Hear our voice, and you will die once more."},
+  {"choice": [{"text": "Yes.", "set": "voice_yes"}, {"text": "No.", "set": "voice_no"}]},
+  {"who": "whale", "text": "Hush. Listen."}
+]}

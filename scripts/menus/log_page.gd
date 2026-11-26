@@ -33,7 +33,7 @@ func refresh():
 	var found_any = false
 	# days 1 .. today. A day only gets a button if its radio was finished
 	for day_number in range(1, GameState.day + 1):
-		if GameState.get_radio_lines(GameState.loop, day_number).size() == 0:
+		if GameState.get_radio_lines(GameState.loop, day_number).size() == 0 and GameState.get_freq52_lines(day_number).size() == 0:
 			continue
 		found_any = true
 		day_list.add_child(make_day_button(day_number))
@@ -80,7 +80,7 @@ func make_day_button(day_number):
 
 # writes the saved radio lines of that day on the right page
 func show_day(day_number):
-	var lines = GameState.get_radio_lines(GameState.loop, day_number)
+	var lines = GameState.get_freq52_lines(day_number) + GameState.get_radio_lines(GameState.loop, day_number)
 	log_text.clear()
 	log_text.append_text("Day " + str(day_number) + "\n\n")
 	for line in lines:

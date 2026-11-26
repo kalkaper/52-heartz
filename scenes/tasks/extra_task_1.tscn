@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://cutexdw6u22wm"]
+
+[ext_resource type="Script" uid="uid://dl7yxc7antcmm" path="res://scripts/tasks/extra_task_1.gd" id="1_k81db"]
+
+[node name="ExtraTask1" type="Control" unique_id=1022228057]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_k81db")
+
+[node name="Buttons" type="Control" parent="." unique_id=1066734436]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Buttons" unique_id=973558814]
+layout_mode = 0
+offset_left = 560.0
+offset_top = 140.0
+offset_right = 800.0
+offset_bottom = 380.0
+
+[node name="ColorRect2" type="ColorRect" parent="Buttons" unique_id=1177969079]
+layout_mode = 0
+offset_left = 840.0
+offset_top = 140.0
+offset_right = 1080.0
+offset_bottom = 380.0
+
+[node name="ColorRect3" type="ColorRect" parent="Buttons" unique_id=2108692791]
+layout_mode = 0
+offset_left = 1120.0
+offset_top = 140.0
+offset_right = 1360.0
+offset_bottom = 380.0
+
+[node name="ColorRect4" type="ColorRect" parent="Buttons" unique_id=681060366]
+layout_mode = 0
+offset_left = 560.0
+offset_top = 420.0
+offset_right = 800.0
+offset_bottom = 660.0
+
+[node name="ColorRect5" type="ColorRect" parent="Buttons" unique_id=1692073369]
+layout_mode = 0
+offset_left = 840.0
+offset_top = 420.0
+offset_right = 1080.0
+offset_bottom = 660.0
+
+[node name="ColorRect6" type="ColorRect" parent="Buttons" unique_id=897282163]
+layout_mode = 0
+offset_left = 1120.0
+offset_top = 420.0
+offset_right = 1360.0
+offset_bottom = 660.0
+
+[node name="ColorRect7" type="ColorRect" parent="Buttons" unique_id=1407130306]
+layout_mode = 0
+offset_left = 560.0
+offset_top = 700.0
+offset_right = 800.0
+offset_bottom = 940.0
+
+[node name="ColorRect8" type="ColorRect" parent="Buttons" unique_id=903703194]
+layout_mode = 0
+offset_left = 840.0
+offset_top = 700.0
+offset_right = 1080.0
+offset_bottom = 940.0
+
+[node name="ColorRect9" type="ColorRect" parent="Buttons" unique_id=2123021774]
+layout_mode = 0
+offset_left = 1120.0
+offset_top = 700.0
+offset_right = 1360.0
+offset_bottom = 940.0
+
+[node name="Success" type="Label" parent="." unique_id=1013198015]
+layout_mode = 0
+offset_left = 743.0
+offset_top = 21.0
+offset_right = 1204.0
+offset_bottom = 109.0
+theme_override_font_sizes/font_size = 64
+text = "Task completed!"

@@ -1,8 +1,8 @@
+TextureRect
 RichTextLabel
 VBoxContainer
 Label
 TextureButton
-TextureRect
 Panel
 ColorRect
 CollisionPolygon2D

@@ -24,6 +24,15 @@ func setup(mode):
 	elif mode == "dock_forced":
 		question.text = "Go To The Dock?"
 		no_button.hide()
+	elif mode == "freq52_optional":
+		question.text = "Put Up 52 Hz Frequency?"
+		no_button.show()
+	elif mode == "freq52_forced":
+		question.text = "The radio keeps calling... Put Up 52 Hz?"
+		no_button.hide()	
+	elif mode == "lamp":
+		question.text = "Turn The Lamp Brighter?"
+		no_button.show()
 	else:
 		question.text = "End The Day?"
 		no_button.show()

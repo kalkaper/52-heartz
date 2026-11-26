@@ -1,5 +1,25 @@
-{"lines": [
-  {"who": "captain", "text": "Bip bop, lighthouse. Radio check."},
-  {"who": "you", "text": "Loud and clear. Banana."},
-  {"who": "captain", "text": "Good. Whaling season starts today. Blah blah."}
-]}
+{
+  "id": "l1_d1",
+  "lines": [
+	{"who": "system", "text": "Dusk. The sun has almost fully disappeared into the horizon."},
+	{"who": "system", "text": "She is away from the VHF radio when she notices a ship on the radar, getting too close to the island in silence."},
+	{"who": "you", "text": "This is (lighthouse name), do you copy? Please state your vessel name. I repeat, this is (lighthouse name), please state your vessel name. Over."},
+	{"who": "captain", "text": "Copy, (lighthouse name), this is the Sul Mare radio officer. Over."},
+	{"who": "you", "text": "You are rapidly approaching (island name). Please state your current speed and coordinates. Over."},
+	{"who": "captain", "text": "(speed and coordinates). Over."},
+	{"who": "you", "text": "Copy that. The (lighthouse name) is (coordinates). Please state your present activities near these waters. Over."},
+	{"who": "captain", "text": "We are conducting whaling operations approximately five nautical miles from your coordinates. Over."},
+	{"who": "you", "text": "Understood. How long do you intend to remain in the area? Over."},
+	{"who": "captain", "text": "Approximately seven days, weather permitting. Over."},
+	{"choice": [
+	  {"text": "Received. Over and out.", "set": "no_questions"},
+	  {"text": "We would like to confirm whether your vessel holds a valid commercial whaling permit for operations in these waters. Over.", "set": "asked_permit"}
+	]},
+	{"who": "captain", "text": "Affirmative, our vessel is operating under an authorized commercial whaling license. Over.", "if": "asked_permit"},
+	{"who": "you", "text": "Could you provide your permit number for our records? Over.", "if": "asked_permit"},
+	{"who": "captain", "text": "Please hold while we consult the captain. Over.", "if": "asked_permit"},
+	{"who": "you", "text": "Understood. Standing by.", "if": "asked_permit"},
+	{"who": "captain", "text": "(lighthouse name), thank you for standing by. Our permit number is NZ-IWC-251197-082. Over.", "if": "asked_permit"},
+	{"who": "you", "text": "Received, thank you for your cooperation. (lighthouse name), over and out.", "if": "asked_permit"}
+  ]
+}

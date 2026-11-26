@@ -17,7 +17,7 @@ var current_room = ""
 
 # --- saved radio talks. The key is "loop_day", like "1_1" ---
 var radio_logs = {}
-
+var freq52_logs = {}    # day number -> lines. never cleared, so it survives death
 
 func log_key(loop_number, day_number):
 	return str(loop_number) + "_" + str(day_number)
@@ -50,12 +50,21 @@ func start_next_day():
 	day += 1
 	done_tasks.clear()
 	day_flags.clear()
-	is_night = false
-
+	is_night = Story.get_day(loop, day)["storm"]
+	
 # she died: new loop, day 1. notes stay. the log page only reads the current loop, so old logs vanish
 func start_next_loop():
 	loop += 1
 	day = 1
 	done_tasks.clear()
 	day_flags.clear()
-	is_night = false
+	is_night = Story.get_day(loop, day)["storm"]	
+	
+func save_freq52_lines(day_number, lines):
+	freq52_logs[day_number] = lines.duplicate()
+
+
+func get_freq52_lines(day_number):
+	if freq52_logs.has(day_number):
+		return freq52_logs[day_number]
+	return []

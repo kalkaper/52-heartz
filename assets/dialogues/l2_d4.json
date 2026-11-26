@@ -1,0 +1,11 @@
+{"lines": [
+  {"who": "captain", "text": "MAYDAY MAYDAY! Storm! Storm! Do you copy?!"},
+  {"who": "you", "text": "I copy! Where are you?"},
+  {"who": "captain", "text": "Rocks! Big rocks! Yer lights r out..."},
+  {"who": "system", "text": "Radio Frequency Changed to 52-Hz"},
+  {"who": "whale", "text": "BLUB. BLUB. BLUB. SHRIEEEKKKS MEOW MEOW"},
+  {"who": "whale", "text": "GO TO THE DOCK."},
+  {"choice": [
+	{"text": "Go to the dock.", "set": "dock_yes"}
+  ]}
+]}

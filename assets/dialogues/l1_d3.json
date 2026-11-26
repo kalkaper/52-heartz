@@ -1,5 +1,24 @@
-{"lines": [
-  {"who": "captain", "text": "Boats are out. Many boats. Honk honk."},
-  {"who": "you", "text": "Noted. Pancake."},
-  {"who": "captain", "text": "Over and out."}
-]}
+{
+  "id": "l1_d3",
+  "lines": [
+	{"who": "captain", "text": "(lighthouse name), this is (ship 3 name) reporting position. We are reporting our presence approximately six nautical miles off (the lighthouse island) and twelve miles off the coast, over."},
+	{"who": "you", "text": "Received. Please state your current speed, and coordinates. Over."},
+	{"who": "captain", "text": "We are approximately twelve nautical miles off (the lighthouse island) and sixteen miles off the coast, current coordinates (coordinates), underway towards (coordinates) within the next hour. Over."},
+	{"who": "you", "text": "Copy that. The (lighthouse name) is at (coordinates). Please state your present activities near these waters. Over."},
+	{"who": "captain", "text": "We will be conducting whaling operations in the area, over."},
+	{"who": "you", "text": "Understood. We would like to confirm whether your vessel holds a valid commercial whaling permit for operations in these waters, as well as your vessel’s intended duration to remain in the area. Over."},
+	{"who": "captain", "text": "Affirmative, our vessel is operating under an authorized commercial whaling license, permit number US-IWC-290341-235. Over."},
+	{"who": "you", "text": "Received. Am I to understand that your vessel originates from the United States, outside of the Oceania Commonwealth region? Over."},
+	{"who": "captain", "text": "That’s right, our vessel originated from the United States and is operating in the area under an authorized commercial whaling license. Over."},
+	{"who": "you", "text": "Alright. Due to the nature of your permit we will have to confirm your permit number and vessel with border officials. We will report back to greenlight your operations within the next two days or so; we ask you to not resume any commercial operations and stand by until then. We apologize for the delay. Over."},
+	{"who": "captain", "text": "… Understood. Is there any chance you can confirm ASAP? Over."},
+	{"who": "you", "text": "As mentioned, we will report back to greenlight your operations within the next two days or so, depending on the queue. We will do our best to ensure confirmation as soon as possible. Over."},
+	{"who": "captain", "text": "Understood. We will stand by the coordinates underway. Over."},
+	{"who": "you", "text": "Thank you for your cooperation. Be advised that there are other whaling vessels conducting similar commercial whaling operations in the surrounding waters. Please exercise caution and maintain a safe distance. Over."},
+	{"who": "captain", "text": "Understood. Can you provide their approximate positions? Over."},
+	{"who": "you", "text": "At present two vessels, Sul Mare, last reported yesterday evening at approximately eight nautical miles northeast of your underway position, and (ship 2), last reported yesterday noon at approximately ten nautical miles south of your underway position. Over."},
+	{"who": "captain", "text": "Received, thank you for the confirmation. And oh, one more question regarding the area — how’s the weather forecast? Over."},
+	{"who": "you", "text": "Current weather forecasts for the area within the next week are mildly overcast, with moderate winds from the northwest at approximately fifteen knots. Visibility is fair, with occasional rain showers expected. Over."},
+	{"who": "captain", "text": "That’s good to know. Once again we thank you for the confirmation and we hope to hear from you soon. (ship 3 name) over and out."}
+  ]
+}

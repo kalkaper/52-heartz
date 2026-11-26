@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://du22v70berrqs"]
+
+[ext_resource type="Script" uid="uid://brxw10mjk3o30" path="res://scripts/tasks/charge_radio.gd" id="1_w1sec"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w1sec"]
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+
+[node name="ChargeRadio" type="Control" unique_id=466140086]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w1sec")
+
+[node name="ChargeButton" type="TextureButton" parent="." unique_id=1570167351]
+layout_mode = 0
+offset_left = 1600.0
+offset_top = 720.0
+offset_right = 1780.0
+offset_bottom = 900.0
+action_mode = 0
+
+[node name="Fill" type="ColorRect" parent="ChargeButton" unique_id=215657765]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0.15686275)
+
+[node name="OutlineBox" type="Panel" parent="ChargeButton" unique_id=1808720641]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w1sec")
+
+[node name="OutlineImage" type="TextureRect" parent="ChargeButton" unique_id=1152210565]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
+
+[node name="Battery" type="ColorRect" parent="." unique_id=1036361483]
+layout_mode = 0
+offset_left = 206.0
+offset_top = 821.0
+offset_right = 686.0
+offset_bottom = 861.0
+
+[node name="Label" type="Label" parent="." unique_id=981566046]
+layout_mode = 0
+offset_left = 650.0
+offset_top = 108.0
+offset_right = 1160.0
+offset_bottom = 282.0
+theme_override_font_sizes/font_size = 128
+text = "Charged!"

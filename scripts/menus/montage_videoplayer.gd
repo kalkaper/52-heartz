@@ -1,5 +1,5 @@
 extends Control
-
+const TITLE_FONT = "res://assets/fonts/title.ttf"   # change to your real file name
 # await montage.play(list_of_steps). Click skips the current step.
 
 @onready var image = $Image
@@ -28,6 +28,8 @@ func _ready():
 	caption.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	caption.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	caption.add_theme_font_size_override("font_size", 48)
+	if ResourceLoader.exists(TITLE_FONT):
+		caption.add_theme_font_override("font", load(TITLE_FONT))
 	caption.add_theme_color_override("font_color", Color(1, 1, 1, 1))
 	caption.add_theme_color_override("font_outline_color", Color(0, 0, 0, 1))
 	caption.add_theme_constant_override("outline_size", 12)
@@ -55,26 +57,35 @@ func play(steps):
 
 
 func show_step(step):
-	var texture = find_texture(step)
-	image.texture = texture
-	image.material = make_effect(step.get("effect", ""))
-	image.visible = (texture != null)
+	if step.get("same_image", false):
+		# keep the picture. "params" can still change the effect (stronger wind)
+		if image.material is ShaderMaterial:
+			set_effect_params(image.material, step.get("params", {}))
+	else:
+		var texture = find_texture(step)
+		image.texture = texture
+		image.visible = (texture != null)
+		image.material = make_effect(step.get("effect", ""), step.get("params", {}))
 	var words = step.get("text", "")
-	if texture == null and step.has("placeholder"):
+	if not image.visible and step.has("placeholder"):
 		if words != "":
 			words += "\n"
 		words += step["placeholder"]
+	caption.add_theme_font_size_override("font_size", int(step.get("size", 48)))
+	caption.add_theme_color_override("font_color", Color(step.get("color", "#ffffff")))
+	caption.add_theme_constant_override("outline_size", int(step.get("outline", 0)))
 	caption.text = words
 	if step.has("sound") and ResourceLoader.exists(step["sound"]):
 		audio.stream = load(step["sound"])
 		audio.play()
-
 
 func find_texture(step):
 	if step.has("image") and ResourceLoader.exists(step["image"]):
 		return load(step["image"])
 	if step.has("scene") and ResourceLoader.exists(step["scene"]):
 		var room = load(step["scene"]).instantiate()
+		if step.get("night", false):
+			room.apply_night()
 		var background = room.get_node_or_null("Background")
 		var texture = null
 		if background is TextureRect:
@@ -89,7 +100,7 @@ func _gui_input(event):
 		skip_requested = true
 
 # "effect": "underwater" -> uses res://assets/shaders/underwater.gdshader
-func make_effect(effect_name):
+func make_effect(effect_name, params = {}):
 	if effect_name == "":
 		return null
 	var path = "res://assets/shaders/" + effect_name + ".gdshader"
@@ -98,4 +109,10 @@ func make_effect(effect_name):
 		return null
 	var material = ShaderMaterial.new()
 	material.shader = load(path)
+	set_effect_params(material, params)
 	return material
+
+
+func set_effect_params(material, params):
+	for key in params:
+		material.set_shader_parameter(key, params[key])

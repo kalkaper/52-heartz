@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://duvjsopilrtsw" path="res://scripts/world/lamp_room.gd" id="1_e8eni"]
 [ext_resource type="PackedScene" uid="uid://crgodtyb5jia" path="res://scenes/world/template_spot.tscn" id="2_li452"]
-[ext_resource type="Texture2D" uid="uid://cwobdhh3b6nkf" path="res://assets/textures/Lamproom/lamp_room_dark.png" id="2_qac6c"]
+[ext_resource type="Texture2D" uid="uid://c1hubehc4musl" path="res://assets/textures/Lamproom/lamp_room_lit🔥.png" id="2_x3esq"]
 [ext_resource type="Script" uid="uid://rj776e2eynr2" path="res://scripts/world/template_spot_buttononly.gd" id="4_oh2ao"]
 [ext_resource type="Texture2D" uid="uid://dx6n2s3scdwen" path="res://assets/textures/Journal/Button_ArrowLeft.png" id="4_x3esq"]
 [ext_resource type="Texture2D" uid="uid://doautjxllibwi" path="res://assets/textures/Lamproom/lamp.png" id="5_oh2ao"]
@@ -24,7 +24,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_qac6c")
+texture = ExtResource("2_x3esq")
 expand_mode = 1
 stretch_mode = 5
 
@@ -64,8 +64,8 @@ scale = Vector2(0.7, 0.7)
 texture_normal = ExtResource("5_oh2ao")
 ignore_texture_size = false
 stretch_mode = 3
-choice_texts = Array[String](["Go Below"])
-choice_actions = Array[String](["go_below"])
+choice_texts = Array[String](["Inspect the Lamp"])
+choice_actions = Array[String](["inspect_lamp"])
 
 [node name="ChoicesWhenObjectHovered" type="VBoxContainer" parent="." unique_id=1785295596]
 visible = false

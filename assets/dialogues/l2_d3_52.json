@@ -1,0 +1,7 @@
+{"lines": [
+  {"who": "whale", "text": "The fleets arrive today. Look through the binoculars."},
+  {"choice": [{"text": "Look.", "set": "look"}]},
+  {"if": "look", "montage": "binoculars"},
+  {"who": "whale", "text": "They cannot hear you. Not yet. Not with this voice."},
+  {"who": "you", "text": "I have died before, right?"}
+]}

@@ -39,6 +39,18 @@ offset_bottom = 393.0
 choice_texts = Array[String](["Look outside?"])
 choice_actions = Array[String](["inspect_window"])
 
+[node name="RadioSpot" parent="ObjectSpots" unique_id=689575039 instance=ExtResource("2_a31bw")]
+layout_mode = 0
+offset_left = 599.0
+offset_top = 81.0
+offset_right = 1312.0
+offset_bottom = 914.0
+scale = Vector2(0.7, 0.7)
+ignore_texture_size = false
+stretch_mode = 3
+choice_texts = Array[String](["Inspect Radio?"])
+choice_actions = Array[String](["inspect_radio"])
+
 [node name="DoorSpot" parent="ObjectSpots" unique_id=1136454035 instance=ExtResource("2_a31bw")]
 layout_mode = 0
 offset_left = 154.0

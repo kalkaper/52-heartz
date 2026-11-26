@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://dsk18ycvjl21f"]
+
+[ext_resource type="Script" uid="uid://c4ffc8mtr0dce" path="res://scripts/tasks/extra_task_2.gd" id="1_loi1o"]
+[ext_resource type="Texture2D" uid="uid://mlqwak18flpa" path="res://assets/textures/tasks/Radio3.png" id="2_76t1f"]
+
+[node name="ExtraTask2" type="Control" unique_id=425481347]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_loi1o")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=549889533]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_76t1f")
+expand_mode = 1
+
+[node name="Success" type="Label" parent="." unique_id=702771530]
+layout_mode = 0
+offset_left = 703.0
+offset_top = 19.0
+offset_right = 1164.0
+offset_bottom = 107.0
+theme_override_font_sizes/font_size = 64
+text = "Task completed!"
+
+[node name="Task" type="Label" parent="." unique_id=1225769399]
+layout_mode = 0
+offset_left = 274.0
+offset_top = 578.0
+offset_right = 968.0
+offset_bottom = 644.0
+theme_override_font_sizes/font_size = 48
+text = "Set the frequency to 100 MHz"
+
+[node name="CurrentFrequency" type="Label" parent="." unique_id=2245681]
+layout_mode = 0
+offset_left = 277.0
+offset_top = 648.0
+offset_right = 865.0
+offset_bottom = 714.0
+theme_override_font_sizes/font_size = 32
+text = "Current frequency: 88 MHz"
+
+[node name="Slider" type="Control" parent="." unique_id=988141968]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SliderBar" type="ColorRect" parent="Slider" unique_id=598385851]
+layout_mode = 0
+offset_left = 519.0
+offset_top = 382.0
+offset_right = 527.0
+offset_bottom = 422.0
+color = Color(1, 0, 0, 1)
+
+[node name="88MHz" type="Label" parent="Slider" unique_id=1412516264]
+layout_mode = 0
+offset_left = 358.0
+offset_top = 420.0
+offset_right = 480.0
+offset_bottom = 464.0
+theme_override_font_sizes/font_size = 32
+text = "88 MHz"
+
+[node name="108MHz" type="Label" parent="Slider" unique_id=693267190]
+layout_mode = 0
+offset_left = 1164.0
+offset_top = 424.0
+offset_right = 1303.0
+offset_bottom = 468.0
+theme_override_font_sizes/font_size = 32
+text = "108 MHz"

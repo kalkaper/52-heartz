@@ -4,11 +4,19 @@ extends Control
 signal day_ended
 signal dock_chosen   # she said YES to "Go to the dock?"
 signal radio_finished   # main.gd turns the room into night
+signal loop_ended(key)        # "lamp_yes" or "lamp_no"
+signal radio_montage(key)     # a dialogue line asked for a montage
+
 
 var page_names = ["menu", "start", "tasks", "log"]
 var current = 1
 var radio_playing = false
 var in_task = false   # a task popup is open
+var awaiting_52 = false      # the 52 Hz question is waiting for her answer
+var awaiting_lamp = false
+var radio_mode = "normal"
+var popup_waiting_click = false
+var current_popup = null
 var end_prompt_wanted = false   # true only when she came from the bed
 
 @onready var pages = {
@@ -24,8 +32,15 @@ var end_prompt_wanted = false   # true only when she came from the bed
 @onready var prev_button = $PrevButton
 @onready var next_button = $NextButton
 @onready var close_button = $CloseButton
+@onready var book = $Book
+
+const NORMAL_FONT = "res://assets/fonts/normal.otf"   # change to your normal font file
 
 
+func use_normal_font(node):
+	if ResourceLoader.exists(NORMAL_FONT):
+		node.add_theme_font_override("font", load(NORMAL_FONT))
+		
 func _ready():
 	prev_button.pressed.connect(go_prev)
 	next_button.pressed.connect(go_next)
@@ -37,8 +52,17 @@ func _ready():
 	end_day_page.hide()
 	radio.hide()
 	show_page(1)
-
-
+	use_normal_font($Book/Pages/EndDayPage/EndDayBox/ButtonChoices/YesButton/YesButtonLabel)
+	use_normal_font($Book/Pages/EndDayPage/EndDayBox/ButtonChoices/NoButton/NoButtonLabel)
+	use_normal_font($RadioTaskView/ContinueButton/ContinueButtonLabel)
+	use_normal_font(get_node("RadioTaskView/52HzButton"))
+	use_normal_font(close_button)
+	radio.montage_requested.connect(on_radio_montage_requested)
+	
+func on_radio_montage_requested(key):
+	radio_montage.emit(key)
+	
+		
 func prev_index():
 	if current == 0:
 		return page_names.size() - 1
@@ -61,7 +85,7 @@ func show_page(index):
 	if page_names[current] == "tasks":
 		task_page.refresh()
 		# all done: the list stays (struck through) and the question shows under it
-		if task_page.are_all_done() and end_prompt_wanted:
+		if task_page.are_all_done() and (end_prompt_wanted or awaiting_52 or awaiting_lamp):
 			end_day_page.setup(current_prompt())
 			end_day_page.show()
 
@@ -82,7 +106,12 @@ func open_end_page():
 	show_page(2)
 	show()
 
-
+# the radio object starts the daily call, which plays inside the journal book
+func open_for_radio():
+	show_page(2)
+	show()
+	start_radio()
+	
 # opens the journal on the start page (the top bar button uses this)
 func open():
 	show_page(1)
@@ -105,6 +134,10 @@ func all_tasks_done():
 
 # which question the end page asks today
 func current_prompt():
+	if awaiting_lamp:
+		return "lamp"
+	if awaiting_52:
+		return "freq52_" + Story.get_day(GameState.loop, GameState.day)["freq52"]
 	var after = Story.get_day(GameState.loop, GameState.day)["after_radio"]
 	# said NO to the dock -> becomes the normal "End the day?"
 	if after == "dock_optional" and GameState.day_flags.has("dock_declined"):
@@ -113,6 +146,16 @@ func current_prompt():
 
 
 func on_end_day_confirmed():
+	if current_prompt() == "lamp":
+		awaiting_lamp = false
+		close()
+		loop_ended.emit("lamp_yes")
+		return
+	if current_prompt().begins_with("freq52"):
+		awaiting_52 = false
+		end_day_page.hide()
+		start_radio("52")
+		return
 	var mode = current_prompt()
 	close()
 	if mode == "end_day":
@@ -122,6 +165,16 @@ func on_end_day_confirmed():
 
 
 func on_end_day_cancelled():
+	if current_prompt() == "lamp":
+		awaiting_lamp = false
+		end_day_page.hide()
+		start_radio("52")
+		return
+	if current_prompt() == "freq52_optional":
+		awaiting_52 = false
+		end_day_page.hide()
+		finish_radio_day()
+		return
 	if current_prompt() == "dock_optional":
 		GameState.day_flags["dock_declined"] = true
 		show_page(2)   # now shows "End the day?"
@@ -142,47 +195,93 @@ func on_task_requested(task_id):
 
 
 # a task popup scene needs ONE thing: a `signal completed`, emitted when the player finishes it
+# a task popup scene needs ONE thing: a `signal completed`
 func start_task_popup(task_id, scene_path):
+	var popup = load(scene_path).instantiate()
+	if not popup.has_signal("completed"):
+		print("Task scene has no 'completed' signal: ", scene_path)
+		popup.free()
+		task_page.mark_done(task_id)
+		return
 	in_task = true
-	pages_holder.hide()
+	book.hide()
 	prev_button.hide()
 	next_button.hide()
 	close_button.hide()
-	var popup = load(scene_path).instantiate()
-	add_child(popup)
-	popup.completed.connect(on_task_popup_completed.bind(task_id, popup))
+	get_parent().add_child(popup)   # next to the journal, so it doesn't inherit the journal font
+	current_popup = popup
+	popup.completed.connect(on_task_popup_completed.bind(task_id))
 
 
-func on_task_popup_completed(task_id, popup):
-	popup.queue_free()
+func on_task_popup_completed(task_id):
+	task_page.mark_done(task_id)   # struck through in the list
+	var hint = Label.new()
+	hint.text = "click anywhere to continue"
+	hint.position = Vector2(700, 1000)
+	hint.add_theme_font_size_override("font_size", 36)
+	current_popup.add_child(hint)
+	# wait a moment so the click that finished the task doesn't also skip this
+	await get_tree().create_timer(0.4).timeout
+	popup_waiting_click = true
+
+
+# after a task is done, any left click leaves it
+func _input(event):
+	if popup_waiting_click and event is InputEventMouseButton \
+			and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		popup_waiting_click = false
+		get_viewport().set_input_as_handled()
+		leave_task_popup()
+
+
+func leave_task_popup():
+	current_popup.queue_free()
+	current_popup = null
 	in_task = false
-	pages_holder.show()
+	book.show()
 	prev_button.show()
 	next_button.show()
 	close_button.show()
-	task_page.mark_done(task_id)
-	show_page(2)
+	close()   # back to the room. to go back to the journal instead, use: show_page(2)
 
-func start_radio():
+func start_radio(mode = "normal"):
+	radio_mode = mode
 	radio_playing = true
 	pages_holder.hide()
 	prev_button.hide()
 	next_button.hide()
 	close_button.hide()
-	radio.start(GameState.loop, GameState.day)
+	radio.start(GameState.loop, GameState.day, mode)
 
 
 func on_radio_finished():
 	radio_playing = false
-	var in_task = false   # a task popup is open
 	pages_holder.show()
 	prev_button.show()
 	next_button.show()
 	close_button.show()
-	task_page.mark_done("radio")
+	var data = Story.get_day(GameState.loop, GameState.day)
+	if radio_mode == "normal":
+		task_page.mark_done("radio")
+		awaiting_52 = (data["freq52"] != "")
+		awaiting_lamp = data["lamp_choice"]
 	show_page(2)
-	radio_finished.emit()
+	if awaiting_52 or awaiting_lamp:
+		return   # a question is on the page now
+	finish_radio_day()
 
+
+# the day's radio part is over: dock, the end of the loop, or the night begins
+func finish_radio_day():
+	if radio.day_choices.has("dock_yes"):
+		close()
+		dock_chosen.emit()
+		return
+	if radio_mode == "52" and Story.get_day(GameState.loop, GameState.day)["lamp_choice"]:
+		close()
+		loop_ended.emit("lamp_no")
+		return
+	radio_finished.emit()
 
 # Esc closes the journal
 func _unhandled_input(event):

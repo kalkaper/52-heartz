@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://dfv6ek8nyek0g" path="res://scripts/world/bedroom_back.gd" id="1_840s1"]
 [ext_resource type="PackedScene" uid="uid://crgodtyb5jia" path="res://scenes/world/template_spot.tscn" id="2_4c0g1"]
+[ext_resource type="Texture2D" uid="uid://nmgteimkf1gx" path="res://assets/textures/BedroomBack/Staircase_day.png" id="2_55qr4"]
+[ext_resource type="Texture2D" uid="uid://dnul3li5imss6" path="res://assets/textures/Journal/Button_ArrowRight.png" id="4_slexq"]
+[ext_resource type="Script" uid="uid://rj776e2eynr2" path="res://scripts/world/template_spot_buttononly.gd" id="5_8ulpu"]
 
 [node name="BedroomBack" type="Control" unique_id=616402177]
 layout_mode = 3
@@ -20,6 +23,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_55qr4")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="ObjectSpots" type="Control" parent="." unique_id=504703285]
 layout_mode = 1
@@ -30,32 +36,56 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="FloorSpot" parent="ObjectSpots" unique_id=1136454035 instance=ExtResource("2_4c0g1")]
+[node name="FloorSpot2" parent="ObjectSpots" unique_id=689575039 instance=ExtResource("2_4c0g1")]
 layout_mode = 0
-offset_left = 914.0
-offset_top = 871.0
-offset_right = 974.0
-offset_bottom = 931.0
+offset_left = 1006.0
+offset_top = 926.00006
+offset_right = 1259.0
+offset_bottom = 1173.0
+rotation = 1.5707964
+scale = Vector2(0.4, 0.4)
+texture_normal = ExtResource("4_slexq")
+ignore_texture_size = false
+stretch_mode = 3
+script = ExtResource("5_8ulpu")
 choice_texts = Array[String](["[look behind]"])
 choice_actions = Array[String](["look_behind"])
+hover_scale = Vector2(1.08, 1.08)
+scale_duration = 0.12
 
-[node name="StaircaseUp" parent="ObjectSpots" unique_id=689575039 instance=ExtResource("2_4c0g1")]
+[node name="FloorSpot3" parent="ObjectSpots" unique_id=2062976698 instance=ExtResource("2_4c0g1")]
 layout_mode = 0
-offset_left = 627.0
-offset_top = 290.0
-offset_right = 687.0
-offset_bottom = 350.0
-choice_texts = Array[String](["Go Above"])
+offset_left = 713.0
+offset_top = 501.0
+offset_right = 966.0
+offset_bottom = 748.0
+rotation = 5.4419365
+scale = Vector2(0.4, 0.4)
+texture_normal = ExtResource("4_slexq")
+ignore_texture_size = false
+stretch_mode = 3
+script = ExtResource("5_8ulpu")
+choice_texts = Array[String](["Go Upstairs"])
 choice_actions = Array[String](["go_above"])
+hover_scale = Vector2(1.08, 1.08)
+scale_duration = 0.12
 
-[node name="StaircaseDown" parent="ObjectSpots" unique_id=1620532964 instance=ExtResource("2_4c0g1")]
+[node name="FloorSpot4" parent="ObjectSpots" unique_id=2070539526 instance=ExtResource("2_4c0g1")]
 layout_mode = 0
-offset_left = 619.0
-offset_top = 432.0
-offset_right = 679.0
-offset_bottom = 492.0
-choice_texts = Array[String](["Go Below"])
+offset_left = 1312.0001
+offset_top = 857.0
+offset_right = 1565.0001
+offset_bottom = 1104.0
+rotation = 2.3631759
+scale = Vector2(0.4, 0.4)
+texture_normal = ExtResource("4_slexq")
+ignore_texture_size = false
+stretch_mode = 3
+script = ExtResource("5_8ulpu")
+choice_texts = Array[String](["Go Downstairs"])
 choice_actions = Array[String](["go_below"])
+hover_scale = Vector2(1.08, 1.08)
+scale_duration = 0.12
 
 [node name="ChoicesWhenObjectHovered" type="VBoxContainer" parent="." unique_id=1785295596]
 visible = false
